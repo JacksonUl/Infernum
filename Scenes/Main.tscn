@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpgdmnt5ei0u5"]
+
+[ext_resource type="Texture2D" uid="uid://bh05q30t7s1ww" path="res://Assets/Tiles/Floor_Tiles.png" id="1_vwk6p"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FloorTiles" type="Sprite2D" parent="."]
+position = Vector2(575, 323.5)
+scale = Vector2(8.98437, 5.03906)
+texture = ExtResource("1_vwk6p")
