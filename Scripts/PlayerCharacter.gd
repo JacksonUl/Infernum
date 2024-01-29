@@ -2,66 +2,69 @@
 extends CharacterBody2D
 
 
-var speed = 1
 
-var movement = Vector2.ZERO
-
-var pressingup = 0
-
-var pressingright = 0
-
-var pressingdown = 0
-
-var pressingleft = 0
-
+var dashcooldown = 0
+var dashing = false
+var sprinting = false
 
 func _input(event):
 	if event.is_action_pressed("Move_Left"):
-		movement.x = -1
-		pressingleft = 1
+		velocity.x = -200
 	if event.is_action_pressed("Move_Right"):
-		movement.x = 1
-		pressingright = 1
+		velocity.x = 200
 	if event.is_action_pressed("Move_Up"):
-		movement.y = -1
-		pressingup = 1
+		velocity.y = -200
 	if event.is_action_pressed("Move_Down"):
-		movement.y = 1
-		pressingdown = 1
-			
-			
+		velocity.y = 200
+
+
+
 	if event.is_action_released("Move_Left"):
-		pressingleft = 0
-		if movement.x == 1:
+		if velocity.x == 200:
 			pass
 		else:
-			movement.x = 0
-			
+			velocity.x = 0
+
 	if event.is_action_released("Move_Right"):
-		pressingright = 0
-		if movement.x == -1:
+		if velocity.x == -200:
 			pass
 		else:
-			movement.x = 0
-			
+			velocity.x = 0
 	if event.is_action_released("Move_Up"):
-		pressingup = 0
-		if movement.y == 1:
+		if velocity.y == 200:
 			pass
 		else:
-			movement.y = 0
-			
+			velocity.y = 0
 	if event.is_action_released("Move_Down"):
-		pressingdown = 0
-		if movement.y == -1:
+		if velocity.y == -200:
 			pass
 		else:
-			movement.y = 0
+			velocity.y = 0
+
+
+	if event.is_action_pressed("Dash"):
+		if dashcooldown == 0:
+			dashing = true
+			await get_tree().create_timer(.125).timeout
+			dashing = false
+			dashcooldown = 1
+			await get_tree().create_timer(1.5).timeout
+			dashcooldown = 0
 			
-			
-func _process(delta):
-	velocity.x = movement.x*speed*delta
-	velocity.y = movement.y*speed*delta
+		else:
+			pass
+
+	if event.is_action_pressed("Sprint"):
+		sprinting = true
+	if event.is_action_released("Sprint"):
+		sprinting = false
+
+func _process(_delta):
 	velocity = velocity.normalized()
-	velocity *= 200
+	if dashing == true:
+		velocity *= 1500
+	elif sprinting == true:
+		velocity *= 300
+	else:
+		velocity *= 200
 	move_and_slide()
