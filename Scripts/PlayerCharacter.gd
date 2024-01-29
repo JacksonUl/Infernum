@@ -15,7 +15,6 @@ var pressingdown = 0
 var pressingleft = 0
 
 
-
 func _input(event):
 	if event.is_action_pressed("Move_Left"):
 		movement.x = -1
