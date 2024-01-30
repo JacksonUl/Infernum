@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=6 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="Texture2D" uid="uid://bh05q30t7s1ww" path="res://Assets/Tiles/Floor_Tiles.png" id="1_vwk6p"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="3_jvcj5"]
+[ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="4_vtli6"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7ra8x"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(6, 10, 7, 638, 1151, 648, 1150, 6)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Node2D" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7ra8x")
+navigation_layers = 2
 
 [node name="FloorTiles" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -17,3 +26,7 @@ position = Vector2(-37, -8)
 [node name="HUD" parent="PlayerCharacter" instance=ExtResource("3_jvcj5")]
 position = Vector2(308, 76)
 scale = Vector2(4, 4)
+
+[node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_vtli6")]
+position = Vector2(210, 151)
+player = NodePath("../PlayerCharacter")

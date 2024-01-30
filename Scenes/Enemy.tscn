@@ -4,24 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://byytfwdgennfn" path="res://Assets/Tiles/icon.svg" id="2_ugct6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_easxu"]
-radius = 63.2851
+radius = 16.0
 
-[node name="Node2D" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="EnemyCharacter" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_6a3v2")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_ugct6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_easxu")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 2
+debug_enabled = true
 
-[node name="Timer" type="Timer" parent="CharacterBody2D"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
-[connection signal="timeout" from="CharacterBody2D/Timer" to="CharacterBody2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
