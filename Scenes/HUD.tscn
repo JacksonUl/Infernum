@@ -34,23 +34,24 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[node name="Node2D" type="Node2D"]
+[node name="HUD" type="Node2D"]
+scale = Vector2(0.243214, 0.227678)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 19.0
 offset_top = 16.0
-offset_right = 355.0
-offset_bottom = 69.0
+offset_right = 132.0
+offset_bottom = 49.0
 theme = ExtResource("1_s0o40")
 theme_override_styles/background = SubResource("StyleBoxFlat_jpck7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_q68q0")
 value = 100.0
 
 [node name="StaminaBar" type="ProgressBar" parent="."]
-offset_left = 384.0
-offset_top = 568.0
-offset_right = 768.0
-offset_bottom = 584.0
+offset_left = 21.0
+offset_top = 53.0
+offset_right = 132.0
+offset_bottom = 69.0
 theme = ExtResource("2_ied34")
 theme_override_styles/background = SubResource("StyleBoxFlat_6uxxg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fnn2b")
