@@ -1,13 +1,17 @@
 
 extends CharacterBody2D
 
-
-
+var character_posX
+var character_posY
+var mouse_posX
+var mouse_posY
 var dashcooldown = 0
 var dashing = false
 var sprinting = false
 
+
 func _input(event):
+	
 	if event.is_action_pressed("Move_Left"):
 		velocity.x = -200
 	if event.is_action_pressed("Move_Right"):
@@ -58,6 +62,20 @@ func _input(event):
 		sprinting = true
 	if event.is_action_released("Sprint"):
 		sprinting = false
+		
+	#if event is InputEventMouseMotion:
+	character_posX = self.position.x
+	character_posY = self.position.y
+	mouse_posX = get_global_mouse_position().x
+	mouse_posY = get_global_mouse_position().y
+	if mouse_posX < character_posX:
+		$Sword.position.x = character_posX + 20
+	elif mouse_posX > character_posX:
+		$Sword.position.x = character_posX - 20
+			
+
+	if event is InputEventMouseButton:
+		pass
 
 func _process(_delta):
 	velocity = velocity.normalized()

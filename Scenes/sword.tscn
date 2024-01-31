@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcmto1kwlirfg"]
+
+[ext_resource type="Texture2D" uid="uid://byytfwdgennfn" path="res://Assets/Tiles/icon.svg" id="1_ros4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_755hd"]
+size = Vector2(146.5, 18.25)
+
+[node name="Sword" type="Node2D"]
+
+[node name="Art" type="Sprite2D" parent="."]
+position = Vector2(-0.999993, -2)
+scale = Vector2(1.15625, 0.140625)
+texture = ExtResource("1_ros4f")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_755hd")
