@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjctvnkne043w"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_547rp"]
-[ext_resource type="Texture2D" uid="uid://byytfwdgennfn" path="res://Assets/Tiles/icon.svg" id="2_re04n"]
+[ext_resource type="Texture2D" uid="uid://6a0gtc8r5aw8" path="res://Assets/Sprites/Demon Sprite/Demon Sprite-1.png (4).png" id="2_f7oy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
-size = Vector2(128, 128)
+size = Vector2(256, 68)
 
 [node name="PlayerCharacter" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_547rp")
 
 [node name="PCHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(618, 430)
+position = Vector2(704, 626)
 shape = SubResource("RectangleShape2D_gwlbx")
 
 [node name="PCSprite" type="Sprite2D" parent="."]
-position = Vector2(618, 430)
-texture = ExtResource("2_re04n")
+position = Vector2(704, 544)
+scale = Vector2(6, 6)
+texture = ExtResource("2_f7oy6")
