@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjctvnkne043w"]
+[gd_scene load_steps=4 format=3 uid="uid://cjctvnkne043w"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_547rp"]
 [ext_resource type="Texture2D" uid="uid://byytfwdgennfn" path="res://Assets/Tiles/icon.svg" id="2_re04n"]
-[ext_resource type="PackedScene" uid="uid://dcmto1kwlirfg" path="res://Scenes/sword.tscn" id="3_utxwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
 size = Vector2(128, 128)
@@ -12,11 +11,9 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_547rp")
 
 [node name="PCHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(618, 430)
 shape = SubResource("RectangleShape2D_gwlbx")
 
 [node name="PCSprite" type="Sprite2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(618, 430)
 texture = ExtResource("2_re04n")
-
-[node name="Sword" parent="." instance=ExtResource("3_utxwv")]
