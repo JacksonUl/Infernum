@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 
@@ -10,12 +9,16 @@ var sprinting = false
 func _input(event):
 	if event.is_action_pressed("Move_Left"):
 		velocity.x = -200
+		$PCSprite.play("Left")
 	if event.is_action_pressed("Move_Right"):
 		velocity.x = 200
+		$PCSprite.play("Right")
 	if event.is_action_pressed("Move_Up"):
 		velocity.y = -200
+		$PCSprite.play("Up")
 	if event.is_action_pressed("Move_Down"):
 		velocity.y = 200
+		$PCSprite.play("Down")
 
 
 
