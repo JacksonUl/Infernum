@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6a0gtc8r5aw8"
-path="res://.godot/imported/Demon Sprite-1.png (4).png-578fa9f0117c7babcc2f340a3dc62d68.ctex"
+uid="uid://cwuqgkye6v3bb"
+path="res://.godot/imported/Enemy-2.png.png-66b1242ffc3c904c2dd6a93113e8fd41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Demon Sprite/Demon Sprite-1.png (4).png"
-dest_files=["res://.godot/imported/Demon Sprite-1.png (4).png-578fa9f0117c7babcc2f340a3dc62d68.ctex"]
+source_file="res://Assets/Sprites/Enemy Sprites/Enemy-2.png.png"
+dest_files=["res://.godot/imported/Enemy-2.png.png-66b1242ffc3c904c2dd6a93113e8fd41.ctex"]
 
 [params]
 
