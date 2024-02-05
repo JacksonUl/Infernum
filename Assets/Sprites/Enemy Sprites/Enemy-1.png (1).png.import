@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byytfwdgennfn"
-path="res://.godot/imported/icon.svg-ed47b4c0f157485644f2ecc171cc9694.ctex"
+uid="uid://cecsx61135k3p"
+path="res://.godot/imported/Enemy-1.png (1).png-64238ae046da31284f3164b6b5893ac8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-ed47b4c0f157485644f2ecc171cc9694.ctex"]
+source_file="res://Assets/Sprites/Enemy Sprites/Enemy-1.png (1).png"
+dest_files=["res://.godot/imported/Enemy-1.png (1).png-64238ae046da31284f3164b6b5893ac8.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
