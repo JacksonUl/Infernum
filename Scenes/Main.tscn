@@ -8,18 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://cwuqgkye6v3bb" path="res://Assets/Sprites/Enemy Sprites/Enemy-2.png.png" id="6_l70im"]
 
 [node name="Main" type="Node2D"]
-scale = Vector2(2.84, 2.84)
+position = Vector2(-3, 0)
 script = ExtResource("1_a1j20")
 
 [node name="Test Level" parent="." instance=ExtResource("1_2cbwi")]
-position = Vector2(-322.434, 72.5121)
+position = Vector2(1.05634, -1.05634)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
-position = Vector2(-560, -157)
+position = Vector2(1.05634, -1.19209e-06)
 
 [node name="HUD" parent="PlayerCharacter" instance=ExtResource("3_jvcj5")]
-position = Vector2(447.041, 161.803)
-scale = Vector2(4, 4)
+position = Vector2(-0.352113, -11.2676)
 
 [node name="Enemy Variant 1" type="Sprite2D" parent="."]
 position = Vector2(-225, -23.9437)
