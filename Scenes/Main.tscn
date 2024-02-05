@@ -14,12 +14,6 @@ script = ExtResource("1_a1j20")
 [node name="Test Level" parent="." instance=ExtResource("1_2cbwi")]
 position = Vector2(1.05634, -1.05634)
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
-position = Vector2(1.05634, -1.19209e-06)
-
-[node name="HUD" parent="PlayerCharacter" instance=ExtResource("3_jvcj5")]
-position = Vector2(-0.352113, -11.2676)
-
 [node name="Enemy Variant 1" type="Sprite2D" parent="."]
 position = Vector2(-225, -23.9437)
 texture = ExtResource("5_8drfe")
@@ -27,3 +21,9 @@ texture = ExtResource("5_8drfe")
 [node name="Enemy Variant 2" type="Sprite2D" parent="."]
 position = Vector2(-180.986, -11.6197)
 texture = ExtResource("6_l70im")
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
+position = Vector2(1.05634, -1.19209e-06)
+
+[node name="HUD" parent="PlayerCharacter" instance=ExtResource("3_jvcj5")]
+position = Vector2(-2.05634, -23)
