@@ -68,3 +68,5 @@ func _process(_delta):
 	else:
 		velocity *= 200
 	move_and_slide()
+	
+	
