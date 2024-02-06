@@ -1,62 +1,108 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3fck70mrecpo"]
+[gd_scene load_steps=13 format=3 uid="uid://c3fck70mrecpo"]
 
-[ext_resource type="Theme" uid="uid://d4dikn7nqc8ia" path="res://Themes/ProgressBar.tres" id="1_s0o40"]
-[ext_resource type="Theme" uid="uid://7fj61c1n68s" path="res://Themes/StaminaBar.tres" id="2_ied34"]
+[ext_resource type="Texture2D" uid="uid://dh0vekhpbu3xq" path="res://Assets/Heath Bar/Heath Empty.png" id="1_sluxo"]
+[ext_resource type="Texture2D" uid="uid://rtwv8lr724qj" path="res://Assets/Heath Bar/Health Full.png" id="2_nvfwn"]
+[ext_resource type="Texture2D" uid="uid://b801cgb1blyhl" path="res://Assets/Heath Bar/Heath Half.png" id="3_0j8lb"]
+[ext_resource type="Texture2D" uid="uid://qyt7631fjt6f" path="res://Assets/Heath Bar/Heath One Quarter.png" id="4_v2pui"]
+[ext_resource type="Texture2D" uid="uid://brotfrhd2kc5w" path="res://Assets/Heath Bar/Heath Three Quarters.png" id="5_lf14n"]
+[ext_resource type="Texture2D" uid="uid://b8vu1cm4ao7cf" path="res://Assets/Stamina Bar/Stamina Empty.png" id="6_mvd0d"]
+[ext_resource type="Texture2D" uid="uid://dcwdnffawfqnh" path="res://Assets/Stamina Bar/Stamina Full.png" id="7_5wpfp"]
+[ext_resource type="Texture2D" uid="uid://dm0fm8kuf178m" path="res://Assets/Stamina Bar/Stamina Half.png" id="8_gp8bi"]
+[ext_resource type="Texture2D" uid="uid://7jvguq1t0w37" path="res://Assets/Stamina Bar/Stamina One Quarter.png" id="9_ucfvm"]
+[ext_resource type="Texture2D" uid="uid://0wxxqdxhxgtm" path="res://Assets/Stamina Bar/Stamina Three Quarters.png" id="10_v06pi"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpck7"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 1, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_82nab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sluxo")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nvfwn")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0j8lb")
+}],
+"loop": true,
+"name": &"Half",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_v2pui")
+}],
+"loop": true,
+"name": &"One Quarter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lf14n")
+}],
+"loop": true,
+"name": &"Three Quarters",
+"speed": 5.0
+}]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q68q0"]
-bg_color = Color(0.258824, 0.423529, 0.807843, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0.8, 0.8, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uxxg"]
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnn2b"]
-bg_color = Color(0.356863, 0.792157, 0, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.8, 0.8, 0.8, 0)
+[sub_resource type="SpriteFrames" id="SpriteFrames_bg46i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_mvd0d")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5wpfp")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_gp8bi")
+}],
+"loop": true,
+"name": &"Half",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ucfvm")
+}],
+"loop": true,
+"name": &"One Quarter",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_v06pi")
+}],
+"loop": true,
+"name": &"Three Quarters",
+"speed": 5.0
+}]
 
 [node name="HUD" type="Node2D"]
-scale = Vector2(0.243214, 0.227678)
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 19.0
-offset_top = 16.0
-offset_right = 132.0
-offset_bottom = 49.0
-scale = Vector2(0.798234, 0.393193)
-theme = ExtResource("1_s0o40")
-theme_override_styles/background = SubResource("StyleBoxFlat_jpck7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_q68q0")
-value = 100.0
-show_percentage = false
+[node name="Heath Bar" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_82nab")
+animation = &"Full"
 
-[node name="StaminaBar" type="ProgressBar" parent="."]
-offset_left = 20.558
-offset_top = 30.7452
-offset_right = 131.558
-offset_bottom = 46.7452
-scale = Vector2(0.789459, 0.897873)
-theme = ExtResource("2_ied34")
-theme_override_styles/background = SubResource("StyleBoxFlat_6uxxg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_fnn2b")
-value = 100.0
-show_percentage = false
+[node name="Stamina Bar" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bg46i")
+animation = &"Full"
