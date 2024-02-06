@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 
+signal attack
 
+var dir
 var dashcooldown = 0
 var dashing = false
 var sprinting = false
@@ -10,16 +12,22 @@ func _input(event):
 	if event.is_action_pressed("Move_Left"):
 		velocity.x = -200
 		$PCSprite.play("Left")
+		dir = "left"
+		
 	if event.is_action_pressed("Move_Right"):
 		velocity.x = 200
 		$PCSprite.play("Right")
+		dir = "right"
+		
 	if event.is_action_pressed("Move_Up"):
 		velocity.y = -200
 		$PCSprite.play("Up")
+		dir = "up"
+
 	if event.is_action_pressed("Move_Down"):
 		velocity.y = 200
 		$PCSprite.play("Down")
-
+		dir = "down"
 
 
 	if event.is_action_released("Move_Left"):
@@ -56,6 +64,19 @@ func _input(event):
 			
 		else:
 			pass
+			
+			
+	if event.is_action_pressed("Attack"):
+		if dir == "right":
+			$Sword.position.x = self.position.x
+			$Sword.position.y = self.position.y
+			
+			print(self.position.y)
+		$Sword.show()
+		emit_signal("attack")
+		print(dir)
+
+		
 
 	if event.is_action_pressed("Sprint"):
 		sprinting = true
