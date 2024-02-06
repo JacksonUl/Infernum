@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=6 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="3_jvcj5"]
-[ext_resource type="Texture2D" uid="uid://cecsx61135k3p" path="res://Assets/Sprites/Enemy Sprites/Enemy-1.png (1).png" id="5_8drfe"]
-[ext_resource type="Texture2D" uid="uid://cwuqgkye6v3bb" path="res://Assets/Sprites/Enemy Sprites/Enemy-2.png.png" id="6_l70im"]
+[ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(-3, 0)
@@ -14,16 +13,12 @@ script = ExtResource("1_a1j20")
 [node name="Test Level" parent="." instance=ExtResource("1_2cbwi")]
 position = Vector2(1.05634, -1.05634)
 
-[node name="Enemy Variant 1" type="Sprite2D" parent="."]
-position = Vector2(-225, -23.9437)
-texture = ExtResource("5_8drfe")
-
-[node name="Enemy Variant 2" type="Sprite2D" parent="."]
-position = Vector2(-180.986, -11.6197)
-texture = ExtResource("6_l70im")
-
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
-position = Vector2(1.05634, -1.19209e-06)
+position = Vector2(-85, -8)
 
 [node name="HUD" parent="PlayerCharacter" instance=ExtResource("3_jvcj5")]
 position = Vector2(-2.05634, -23)
+
+[node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
+position = Vector2(-27, 40)
+player = NodePath("../PlayerCharacter/HUD")
