@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1g4n4hy2030d"]
 
 [ext_resource type="Texture2D" uid="uid://bh05q30t7s1ww" path="res://Assets/Tiles/Floor_Tiles.png" id="1_4fp4e"]
-[ext_resource type="Script" path="res://sword.gd" id="1_af5fo"]
+[ext_resource type="Script" path="res://Scripts/sword.gd" id="1_af5fo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r62jd"]
 size = Vector2(265, 20)
