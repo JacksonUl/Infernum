@@ -22,12 +22,10 @@ func _input(event):
 	if event.is_action_pressed("Move_Up"):
 		velocity.y = -200
 		$PCSprite.play("Up")
-		dir = "up"
 
 	if event.is_action_pressed("Move_Down"):
 		velocity.y = 200
 		$PCSprite.play("Down")
-		dir = "down"
 
 
 	if event.is_action_released("Move_Left"):
@@ -67,14 +65,11 @@ func _input(event):
 			
 			
 	if event.is_action_pressed("Attack"):
-		if dir == "right":
-			$Sword.position.x = self.position.x
-			$Sword.position.y = self.position.y
-			
-			print(self.position.y)
 		$Sword.show()
 		emit_signal("attack")
-		print(dir)
+		
+		
+
 
 		
 
