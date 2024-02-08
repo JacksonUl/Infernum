@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 100
+const speed = 150
 
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -9,6 +9,7 @@ func _ready() -> void:
 	makepath()
 
 func _physics_process(_delta: float) -> void:
+	await get_tree().create_timer(.000000000001).timeout
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed 
 	move_and_slide()
