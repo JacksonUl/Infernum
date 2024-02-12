@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ca3ov8g5odi2w" path="res://Assets/Sprites/Player Sprite/Demon Sprite-2.png (2).png" id="3_fi576"]
 [ext_resource type="Texture2D" uid="uid://c888t4yrc2n22" path="res://Assets/Sprites/Player Sprite/Demon Sprite-4.png (1).png" id="4_vo6uh"]
 [ext_resource type="Texture2D" uid="uid://dlvqu3oa75iny" path="res://Assets/Sprites/Player Sprite/Demon Sprite-3.png.png" id="5_qeext"]
-[ext_resource type="PackedScene" uid="uid://d1g4n4hy2030d" path="res://Themes/sword.tscn" id="6_412lp"]
+[ext_resource type="PackedScene" uid="uid://d1g4n4hy2030d" path="res://Scenes/sword.tscn" id="6_412lp"]
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="7_05vfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
