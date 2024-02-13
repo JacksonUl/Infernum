@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://6tkl60u4774q"]
 
 [ext_resource type="Script" path="res://Scripts/Level Test.gd" id="1_77n4j"]
-[ext_resource type="Texture2D" uid="uid://lj7pvxbnm51u" path="res://Assets/Tiles/Tiles-3.png.png" id="2_huhus"]
+[ext_resource type="Texture2D" uid="uid://gkdwry6fmak3" path="res://Assets/Tiles/Tiles-3.png (1).png" id="2_bdre7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_h2jpa"]
 vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
@@ -116,7 +116,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_snijx"]
-texture = ExtResource("2_huhus")
+texture = ExtResource("2_bdre7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -232,18 +232,21 @@ texture_region_size = Vector2i(64, 64)
 0:6/0 = 0
 0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:6/0/physics_layer_0/angular_velocity = 0.0
-1:4/0 = 0
-1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:4/0/physics_layer_0/angular_velocity = 0.0
-1:5/0 = 0
-1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:5/0/physics_layer_0/angular_velocity = 0.0
-1:6/0 = 0
-1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:6/0/physics_layer_0/angular_velocity = 0.0
-2:5/0 = 0
-2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:5/0/physics_layer_0/angular_velocity = 0.0
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+6:3/0 = 0
+6:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:3/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:7/0 = 0
+0:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:7/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_6lf1n"]
 tile_size = Vector2i(64, 64)
