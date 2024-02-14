@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ca3ov8g5odi2w" path="res://Assets/Sprites/Player Sprite/Demon Sprite-2.png (2).png" id="3_fi576"]
 [ext_resource type="Texture2D" uid="uid://c888t4yrc2n22" path="res://Assets/Sprites/Player Sprite/Demon Sprite-4.png (1).png" id="4_vo6uh"]
 [ext_resource type="Texture2D" uid="uid://dlvqu3oa75iny" path="res://Assets/Sprites/Player Sprite/Demon Sprite-3.png.png" id="5_qeext"]
-[ext_resource type="PackedScene" uid="uid://d1g4n4hy2030d" path="res://Scenes/sword.tscn" id="6_mwrgu"]
+[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/hitbox_attack.tscn" id="7_2x4nn"]
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="7_05vfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
@@ -58,11 +58,8 @@ scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_uardo")
 animation = &"Left"
 
-[node name="Sword" parent="." instance=ExtResource("6_mwrgu")]
-position = Vector2(-16, 56)
-
 [node name="HUD" parent="." instance=ExtResource("7_05vfw")]
 position = Vector2(0, -128)
 scale = Vector2(4, 4)
 
-[connection signal="attack" from="." to="Sword" method="_on_player_character_attack"]
+[node name="Hitbox Attack" parent="." instance=ExtResource("7_2x4nn")]
