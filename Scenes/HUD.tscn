@@ -101,7 +101,7 @@ animations = [{
 
 [node name="Heath Bar" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_82nab")
-animation = &"Full"
+animation = &"One Quarter"
 
 [node name="Stamina Bar" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bg46i")

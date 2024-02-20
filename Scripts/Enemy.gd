@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const speed = 150
 
+signal hit
+
 @export var player: Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
@@ -19,3 +21,6 @@ func makepath() -> void:
 
 func _on_timer_timeout():
 	makepath()
+
+func _on_area_2d_body_entered(body):
+	emit_signal("hit")

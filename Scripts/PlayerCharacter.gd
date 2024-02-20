@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal attack
 
+var health = 100
 var dir
 var dashcooldown = 0
 var dashing = false
@@ -88,4 +89,9 @@ func _process(_delta):
 		velocity *= 200
 	move_and_slide()
 	
+func _on_enemy_character_hit():
+	health -= 15
+	if health == 0:
+		$PCSprite.visible = false
+		
 	
