@@ -20,3 +20,5 @@ position = Vector2(-388, -106)
 [node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
 position = Vector2(-27, 40)
 player = NodePath("../PlayerCharacter/PathfindingAnchor")
+
+[connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]
