@@ -15,3 +15,8 @@ func _process(delta):
 	rotationAngle = direction.angle()
 	rotation = rotationAngle
 	swordHitbox.position = direction.normalized() * swordlength
+	
+func _input(event):
+	if event.is_action_pressed("Attak"):
+		print($AnimationPlayer.get_root_motion_rotation())
+		
