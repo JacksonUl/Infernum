@@ -4,6 +4,7 @@ extends Node2D
 var swordlength = 30
 var direction
 var rotationAngle
+var newPoint
 
 func _ready():
 	pass
@@ -16,7 +17,12 @@ func _process(delta):
 	rotation = rotationAngle
 	swordHitbox.position = direction.normalized() * swordlength
 	
+	newPoint = rotationAngle - 90
+
 func _input(event):
 	if event.is_action_pressed("Attak"):
-		print($AnimationPlayer.get_root_motion_rotation())
+		set_process(!is_processing())
+		while rotationAngle > newPoint:
+			rotationAngle -=1
+			rotation = rotationAngle
 		
