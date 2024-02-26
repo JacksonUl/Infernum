@@ -31,7 +31,6 @@ position = Vector2(-1.42109e-14, -4)
 shape = SubResource("CapsuleShape2D_fl8n7")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
