@@ -91,7 +91,10 @@ func _process(_delta):
 	
 
 func _on_enemy_character_hit():
-	health -= 10
+	health -= 25
 	print(health)
 	if health == 0:
-		$PCSprite.visible = false
+		$PCSprite.hide()
+	$PCHitbox.disabled = true
+	await get_tree().create_timer(.25).timeout
+	$PCHitbox.disabled = false
