@@ -65,11 +65,6 @@ func _input(event):
 			pass
 			
 			
-	if event.is_action_pressed("Attack"):
-		$Sword.show()
-		emit_signal("attack")
-		
-		
 
 
 		

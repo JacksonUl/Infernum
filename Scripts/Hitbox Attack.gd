@@ -9,15 +9,19 @@ func _ready():
 	pass
 
 func _process(delta):
+	
+	var col = get_node("Area2D/CollisionShape2D")
+	col.set_disabled(true)
+	print(col.is_disabled())
+	
 	direction = get_global_mouse_position() - global_position
 	rotationAngle = direction.angle()
 	rotation = rotationAngle
 	swordHitbox.position = direction.normalized() * swordlength
 	
 	if Input.is_action_pressed("Attak"):
-		set_process(!is_processing())
-		#animation here
-		set_process(is_processing())
+		col.set_disabled(false)
+		get_tree().create_timer(0.5).timeout
 		
 		
 		
