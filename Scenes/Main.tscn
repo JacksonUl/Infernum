@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=6 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
+[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/hitbox_attack.tscn" id="5_snsl4"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(-3, 0)
@@ -17,8 +18,11 @@ position = Vector2(-388, -106)
 
 [node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
 
+[node name="Hitbox Attack2" parent="PlayerCharacter" instance=ExtResource("5_snsl4")]
+
 [node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
 position = Vector2(-27, 40)
 player = NodePath("../PlayerCharacter/PathfindingAnchor")
 
+[connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
 [connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]

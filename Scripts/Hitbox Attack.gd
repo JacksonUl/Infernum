@@ -4,6 +4,7 @@ extends Node2D
 var swordlength = 30
 var direction
 var rotationAngle
+signal damage
 
 func _ready():
 	pass
@@ -11,19 +12,14 @@ func _ready():
 func _process(delta):
 	
 	var col = get_node("Area2D/CollisionShape2D")
-	col.set_disabled(true)
-	print(col.is_disabled())
 	
 	direction = get_global_mouse_position() - global_position
 	rotationAngle = direction.angle()
 	rotation = rotationAngle
 	swordHitbox.position = direction.normalized() * swordlength
 	
-	if Input.is_action_pressed("Attak"):
-		col.set_disabled(false)
-		get_tree().create_timer(0.5).timeout
-		
-		
-		
-		
-		
+
+
+func _on_area_2d_body_entered(body):
+	if Input.is_action_just_pressed("Attak"):
+		emit_signal("damage")
