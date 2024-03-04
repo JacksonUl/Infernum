@@ -12,7 +12,6 @@ func _process(delta):
 	
 	var col = get_node("Area2D/CollisionShape2D")
 	col.set_disabled(true)
-	print(col.is_disabled())
 	
 	direction = get_global_mouse_position() - global_position
 	rotationAngle = direction.angle()
