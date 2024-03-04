@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjctvnkne043w"]
+[gd_scene load_steps=9 format=3 uid="uid://cjctvnkne043w"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_547rp"]
 [ext_resource type="Texture2D" uid="uid://6a0gtc8r5aw8" path="res://Assets/Sprites/Player Sprite/Demon Sprite-1.png (4).png" id="2_f7oy6"]
 [ext_resource type="Texture2D" uid="uid://ca3ov8g5odi2w" path="res://Assets/Sprites/Player Sprite/Demon Sprite-2.png (2).png" id="3_fi576"]
 [ext_resource type="Texture2D" uid="uid://c888t4yrc2n22" path="res://Assets/Sprites/Player Sprite/Demon Sprite-4.png (1).png" id="4_vo6uh"]
 [ext_resource type="Texture2D" uid="uid://dlvqu3oa75iny" path="res://Assets/Sprites/Player Sprite/Demon Sprite-3.png.png" id="5_qeext"]
-[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/hitbox_attack.tscn" id="7_2x4nn"]
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="7_05vfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
@@ -61,5 +60,3 @@ animation = &"Left"
 [node name="HUD" parent="." instance=ExtResource("7_05vfw")]
 position = Vector2(0, -128)
 scale = Vector2(4, 4)
-
-[node name="Hitbox Attack" parent="." instance=ExtResource("7_2x4nn")]
