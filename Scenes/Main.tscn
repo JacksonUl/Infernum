@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=9 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
@@ -9,6 +9,14 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3sn1"]
 normal = Vector2(0.0045351, -0.99999)
 distance = 288.011
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4dfl"]
+normal = Vector2(0, 1)
+distance = -609.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7dwmx"]
+normal = Vector2(1, 0)
+distance = -980.0
 
 [node name="Main" type="Node2D"]
 position = Vector2(-3, 0)
@@ -31,8 +39,16 @@ player = NodePath("../PlayerCharacter/PathfindingAnchor")
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders"]
-position = Vector2(2, 809)
+position = Vector2(2, 799)
 shape = SubResource("WorldBoundaryShape2D_b3sn1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(4, 93)
+shape = SubResource("WorldBoundaryShape2D_r4dfl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(9, 0)
+shape = SubResource("WorldBoundaryShape2D_7dwmx")
 
 [connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
 [connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]
