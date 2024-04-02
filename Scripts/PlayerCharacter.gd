@@ -10,6 +10,15 @@ var dashing = false
 var sprinting = false
 
 func _input(event):
+	
+	if event.is_action_pressed("Attak"):
+		if dir == "left":
+			$PCSprite.play("lay")
+			#dir = "none"
+		if dir == "right":
+			$PCSprite.play("Right Swing")
+			#dir = "none"
+	
 	if event.is_action_pressed("Move_Left"):
 		velocity.x = -200
 		$PCSprite.play("Left")
@@ -23,10 +32,12 @@ func _input(event):
 	if event.is_action_pressed("Move_Up"):
 		velocity.y = -200
 		$PCSprite.play("Up")
+		dir = "right"
 
 	if event.is_action_pressed("Move_Down"):
 		velocity.y = 200
 		$PCSprite.play("Down")
+		dir = "right"
 
 
 	if event.is_action_released("Move_Left"):
