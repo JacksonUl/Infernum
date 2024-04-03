@@ -13,10 +13,10 @@ func _input(event):
 	
 	if event.is_action_pressed("Attak"):
 		if dir == "left":
-			$PCSprite.play("lay")
+			$PCSprite.play("SwLEFT")
 			#dir = "none"
 		if dir == "right":
-			$PCSprite.play("Right Swing")
+			$PCSprite.play("SwRIGHT")
 			#dir = "none"
 	
 	if event.is_action_pressed("Move_Left"):
