@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=8 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
-[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/hitbox_attack.tscn" id="5_snsl4"]
+[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/Prototype Scenes/hitbox_attack.tscn" id="5_snsl4"]
+[ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_5st10"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3sn1"]
 normal = Vector2(0.0045351, -0.99999)
@@ -24,6 +25,9 @@ position = Vector2(-388, -106)
 
 [node name="Hitbox Attack2" parent="PlayerCharacter" instance=ExtResource("5_snsl4")]
 
+[node name="HITBOX" parent="PlayerCharacter" instance=ExtResource("6_5st10")]
+scale = Vector2(4, 4)
+
 [node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
 position = Vector2(-27, 40)
 player = NodePath("../PlayerCharacter/PathfindingAnchor")
@@ -35,4 +39,5 @@ position = Vector2(2, 809)
 shape = SubResource("WorldBoundaryShape2D_b3sn1")
 
 [connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
+[connection signal="area_entered" from="PlayerCharacter/HITBOX" to="EnemyCharacter" method="_on_hitbox_area_entered"]
 [connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]

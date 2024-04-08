@@ -25,10 +25,11 @@ func _on_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	emit_signal("hit")
-	
-func _on_hitbox_attack_2_damage():
-	takeDamage(10)
 		
 func takeDamage(damage):
 	enemyHealth -= damage
 	print(enemyHealth)
+
+
+func _on_hitbox_area_entered(area):
+	takeDamage(10)
