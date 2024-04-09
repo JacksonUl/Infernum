@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsui4w6w367gh"]
 
-[ext_resource type="Script" path="res://Scenes/hitbox.gd" id="1_m523j"]
+[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="1_m523j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ociei"]
 radius = 69.0072
