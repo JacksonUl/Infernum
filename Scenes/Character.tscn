@@ -299,7 +299,7 @@ shape = SubResource("RectangleShape2D_gwlbx")
 [node name="PCSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_uardo")
-animation = &"SwRIGHT"
+animation = &"SwLEFT"
 
 [node name="HUD" parent="." instance=ExtResource("7_05vfw")]
 position = Vector2(32, -128)

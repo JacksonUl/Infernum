@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwmdr5qh5lv7b"]
 
-[ext_resource type="Script" path="res://Scripts/Hitbox Attack.gd" id="1_xywj7"]
+[ext_resource type="Script" path="res://Scripts/Prototype Scripts/Hitbox Attack.gd" id="1_xywj7"]
 [ext_resource type="Texture2D" uid="uid://bh05q30t7s1ww" path="res://Assets/Tiles/Floor_Tiles.png" id="2_ojyqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgfby"]
