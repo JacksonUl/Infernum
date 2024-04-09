@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
-[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/hitbox_attack.tscn" id="5_snsl4"]
+[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/Prototype Scenes/hitbox_attack.tscn" id="5_snsl4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3sn1"]
 normal = Vector2(0.0045351, -0.99999)
