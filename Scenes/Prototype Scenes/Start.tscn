@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://j0awcl8vwakv"]
+
+[node name="StartScreen" type="Node2D"]
+
+[node name="StartBackGround" type="ColorRect" parent="."]
+offset_left = -2666.0
+offset_top = -2112.0
+offset_right = 4706.0
+offset_bottom = 3235.0
+color = Color(0.133333, 0.105882, 0.121569, 0.862745)
