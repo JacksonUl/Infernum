@@ -33,5 +33,5 @@ func takeDamage(damage):
 		self.hide()
 
 
-func _on_hitbox_area_entered(area):
+func _on_area_2d_area_entered(area):
 	takeDamage(10)

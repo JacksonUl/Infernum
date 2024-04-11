@@ -77,7 +77,6 @@ func _input(event):
 
 
 
-		
 
 	if event.is_action_pressed("Sprint"):
 		sprinting = true
