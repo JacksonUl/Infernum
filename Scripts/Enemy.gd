@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const speed = 150
-var enemyHealth = 100
+var enemyHealth = 20
 
 signal hit
 
@@ -29,6 +29,8 @@ func _on_area_2d_body_entered(body):
 func takeDamage(damage):
 	enemyHealth -= damage
 	print(enemyHealth)
+	if enemyHealth <= 0:
+		self.hide()
 
 
 func _on_hitbox_area_entered(area):
