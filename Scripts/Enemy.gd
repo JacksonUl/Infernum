@@ -31,6 +31,7 @@ func takeDamage(damage):
 	print(enemyHealth)
 	if enemyHealth <= 0:
 		self.hide()
+		queue_free()
 
 
 func _on_area_2d_area_entered(area):
