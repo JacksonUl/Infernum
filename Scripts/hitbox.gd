@@ -7,7 +7,7 @@ func _process(delta):
 	
 	if Input.is_action_pressed("Attak"):
 		$CollisionShape2D.disabled = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.9).timeout
 		$CollisionShape2D.disabled = true
 		
 		
