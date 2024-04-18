@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const speed = 150
-var enemyHealth = 100
+var enemyHealth = 20
 
 signal hit
 
@@ -25,10 +25,14 @@ func _on_timer_timeout():
 
 func _on_area_2d_body_entered(body):
 	emit_signal("hit")
-	
-func _on_hitbox_attack_2_damage():
-	takeDamage(10)
 		
 func takeDamage(damage):
 	enemyHealth -= damage
 	print(enemyHealth)
+	if enemyHealth <= 0:
+		self.hide()
+		queue_free()
+
+
+func _on_area_2d_area_entered(area):
+	takeDamage(10)

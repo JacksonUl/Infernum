@@ -1,14 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=11 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
-[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/hitbox_attack.tscn" id="5_snsl4"]
+[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/Prototype Scenes/hitbox_attack.tscn" id="5_snsl4"]
+[ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3sn1"]
 normal = Vector2(0.0045351, -0.99999)
 distance = 288.011
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r4dfl"]
+normal = Vector2(0, 1)
+distance = -609.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7dwmx"]
+normal = Vector2(1, 0)
+distance = -980.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6s867"]
+normal = Vector2(-0.999987, -0.00499994)
+distance = -970.998
 
 [node name="Main" type="Node2D"]
 position = Vector2(-3, 0)
@@ -24,6 +37,10 @@ position = Vector2(-388, -106)
 
 [node name="Hitbox Attack2" parent="PlayerCharacter" instance=ExtResource("5_snsl4")]
 
+[node name="Area2D" parent="PlayerCharacter" instance=ExtResource("6_m45y3")]
+position = Vector2(4, 8)
+scale = Vector2(4, 4)
+
 [node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
 position = Vector2(-27, 40)
 player = NodePath("../PlayerCharacter/PathfindingAnchor")
@@ -31,8 +48,21 @@ player = NodePath("../PlayerCharacter/PathfindingAnchor")
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders"]
-position = Vector2(2, 809)
+position = Vector2(2, 799)
 shape = SubResource("WorldBoundaryShape2D_b3sn1")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(4, 93)
+shape = SubResource("WorldBoundaryShape2D_r4dfl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(9, 0)
+shape = SubResource("WorldBoundaryShape2D_7dwmx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(0, -3)
+shape = SubResource("WorldBoundaryShape2D_6s867")
+
 [connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
+[connection signal="area_entered" from="PlayerCharacter/Area2D" to="EnemyCharacter" method="_on_area_2d_area_entered"]
 [connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]
