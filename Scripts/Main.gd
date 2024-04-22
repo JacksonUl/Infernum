@@ -8,3 +8,7 @@ func _input(event):
 		get_tree().quit()
 		
 	
+
+
+func _on_player_character_death():
+	get_tree().change_scene_to_file("res://Scenes/Prototype Scenes/Start.tscn")

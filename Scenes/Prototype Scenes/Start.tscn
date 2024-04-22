@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Themes/Kenney Blocks.ttf" id="1_051vo"]
 [ext_resource type="Script" path="res://Scenes/Prototype Scenes/Start.gd" id="1_dp0o0"]
-[ext_resource type="Texture2D" uid="uid://dg7flkpj3lpw0" path="res://Assets/TitleScreenAssets/TitleScreenLogoInfernum.png" id="2_rbgr7"]
+[ext_resource type="Texture2D" uid="uid://17k0dxhp44hu" path="res://Assets/TitleScreenAssets/TitleScreenLogoInfernum.png" id="2_rbgr7"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_dp0o0")

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="7_05vfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
-size = Vector2(256, 320)
+size = Vector2(384, 352)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4x1g"]
 atlas = ExtResource("4_anhme")
@@ -449,7 +449,7 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("1_547rp")
 
 [node name="PCHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(32, -32)
+position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_gwlbx")
 
 [node name="PCSprite" type="AnimatedSprite2D" parent="."]

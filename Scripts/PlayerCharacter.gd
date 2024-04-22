@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal attack
 
+signal death
+
 var health = 100
 var dir
 var dashcooldown = 0
@@ -104,4 +106,4 @@ func _on_enemy_character_hit():
 	health -= 25
 	if health == 0:
 		queue_free()
-		
+		emit_signal("death")
