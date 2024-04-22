@@ -1,23 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://j0awcl8vwakv"]
+[gd_scene load_steps=4 format=3 uid="uid://j0awcl8vwakv"]
 
-[ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Scripts/Kenney Blocks.ttf" id="1_051vo"]
+[ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Themes/Kenney Blocks.ttf" id="1_051vo"]
+[ext_resource type="Script" path="res://Scenes/Prototype Scenes/Start.gd" id="1_dp0o0"]
+[ext_resource type="Texture2D" uid="uid://dg7flkpj3lpw0" path="res://Assets/TitleScreenAssets/TitleScreenLogoInfernum.png" id="2_rbgr7"]
 
 [node name="StartScreen" type="Node2D"]
+script = ExtResource("1_dp0o0")
 
 [node name="StartBackGround" type="ColorRect" parent="."]
-offset_left = -2666.0
-offset_top = -2112.0
-offset_right = 4706.0
-offset_bottom = 3235.0
+offset_left = -1745.0
+offset_top = -1841.0
+offset_right = 5627.0
+offset_bottom = 3506.0
 color = Color(0.133333, 0.105882, 0.121569, 0.862745)
 
-[node name="Button" type="Button" parent="."]
-offset_left = 754.0
-offset_top = 1256.0
-offset_right = 1779.0
-offset_bottom = 1447.0
+[node name="STartButton" type="Button" parent="."]
+offset_left = 906.0
+offset_top = 1240.0
+offset_right = 1931.0
+offset_bottom = 1431.0
 scale = Vector2(1.00119, 1.00058)
 theme_override_fonts/font = ExtResource("1_051vo")
 theme_override_font_sizes/font_size = 100
 text = "Play
 "
+
+[node name="TitleScreenLogoInfernum" type="Sprite2D" parent="."]
+position = Vector2(1375, 616)
+scale = Vector2(0.396354, 0.413542)
+texture = ExtResource("2_rbgr7")
+
+[connection signal="pressed" from="STartButton" to="." method="_on_s_tart_button_pressed"]
