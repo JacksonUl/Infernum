@@ -18,6 +18,11 @@ func _input(event):
 		if dir == "right":
 			$PCSprite.play("SwRIGHT")
 			#dir = "none"
+		if dir == "down":
+			$PCSprite.play("SwDOWN")
+			
+		if dir == "up":
+			$PCSprite.play("SwUP")
 	
 	if event.is_action_pressed("Move_Left"):
 		velocity.x = -200
@@ -32,12 +37,12 @@ func _input(event):
 	if event.is_action_pressed("Move_Up"):
 		velocity.y = -200
 		$PCSprite.play("Up")
-		dir = "right"
+		dir = "up"
 
 	if event.is_action_pressed("Move_Down"):
 		velocity.y = 200
 		$PCSprite.play("Down")
-		dir = "right"
+		dir = "down"
 
 
 	if event.is_action_released("Move_Left"):
