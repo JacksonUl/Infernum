@@ -79,9 +79,10 @@ func _input(event):
 
 
 	if event.is_action_pressed("Sprint"):
-		sprinting = true
-	if event.is_action_released("Sprint"):
-		sprinting = false
+		if sprinting == false:
+			sprinting = true
+		elif sprinting == true:
+			sprinting = false
 
 func _process(_delta):
 	velocity = velocity.normalized()
@@ -97,7 +98,5 @@ func _process(_delta):
 func _on_enemy_character_hit():
 	health -= 25
 	if health == 0:
-		$PCSprite.visible = false
-	$PCHitbox.disabled = true
-	await get_tree().create_timer(.25).timeout
-	$PCHitbox.disabled = false
+		queue_free()
+		
