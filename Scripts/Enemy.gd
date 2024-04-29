@@ -5,27 +5,28 @@ var enemyHealth = 20
 
 signal hit
 
-@export var player: Node2D
+@onready var player:= $"../PlayerCharacter" as Node2D
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
 func _ready() -> void:
-	makepath()
+	pass
+
 
 func _physics_process(_delta: float) -> void:
 	await get_tree().create_timer(.000000000001).timeout
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed 
 	move_and_slide()
-	
+
 func makepath() -> void:
-	nav_agent.target_position = player.global_position
+	nav_agent.target_position = player.position
 
 func _on_timer_timeout():
 	makepath()
 
 func _on_area_2d_body_entered(body):
 	emit_signal("hit")
-		
+
 func takeDamage(damage):
 	enemyHealth -= damage
 	print(enemyHealth)
@@ -36,3 +37,6 @@ func takeDamage(damage):
 
 func _on_area_2d_area_entered(area):
 	takeDamage(10)
+
+func _on_main_mob_path():
+	makepath()

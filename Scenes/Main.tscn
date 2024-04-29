@@ -33,8 +33,6 @@ position = Vector2(1.05634, -1.05634)
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
 position = Vector2(-388, -106)
 
-[node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
-
 [node name="Hitbox Attack2" parent="PlayerCharacter" instance=ExtResource("5_snsl4")]
 visible = false
 
@@ -42,9 +40,10 @@ visible = false
 position = Vector2(4, 8)
 scale = Vector2(4, 4)
 
-[node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
+[node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
+
+[node name="EnemyCharacter" parent="." instance=ExtResource("5_e6kos")]
 position = Vector2(-27, 40)
-player = NodePath("../PlayerCharacter/PathfindingAnchor")
 
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
@@ -64,6 +63,7 @@ shape = SubResource("WorldBoundaryShape2D_7dwmx")
 position = Vector2(0, -3)
 shape = SubResource("WorldBoundaryShape2D_6s867")
 
+[connection signal="mobPath" from="." to="EnemyCharacter" method="_on_main_mob_path"]
 [connection signal="death" from="PlayerCharacter" to="." method="_on_player_character_death"]
 [connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
 [connection signal="area_entered" from="PlayerCharacter/Sword Hitbox" to="EnemyCharacter" method="_on_area_2d_area_entered"]
