@@ -9,7 +9,6 @@ signal hit
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
 func _ready() -> void:
-	position.x = randf(2)
 	makepath()
 
 
