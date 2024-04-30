@@ -6,6 +6,9 @@ var mob_scene = preload("res://Scenes/Enemy.tscn").instantiate()
 
 func _ready():
 	add_child(mob_scene)
+	add_child(mob_scene)
+	add_child(mob_scene)
+	add_child(mob_scene)
 	emit_signal("mobPath")
 
 # Press escape to quit the game

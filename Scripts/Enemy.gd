@@ -9,7 +9,8 @@ signal hit
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 
 func _ready() -> void:
-	pass
+	position.x = randf(2)
+	makepath()
 
 
 func _physics_process(_delta: float) -> void:
@@ -37,6 +38,4 @@ func takeDamage(damage):
 
 func _on_area_2d_area_entered(area):
 	takeDamage(10)
-
-func _on_main_mob_path():
-	makepath()
+	

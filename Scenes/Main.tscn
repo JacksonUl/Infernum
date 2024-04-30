@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=10 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
-[ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
 [ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/Prototype Scenes/hitbox_attack.tscn" id="5_snsl4"]
 [ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
 
@@ -42,9 +41,6 @@ scale = Vector2(4, 4)
 
 [node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
 
-[node name="EnemyCharacter" parent="." instance=ExtResource("5_e6kos")]
-position = Vector2(-27, 40)
-
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders"]
@@ -63,8 +59,4 @@ shape = SubResource("WorldBoundaryShape2D_7dwmx")
 position = Vector2(0, -3)
 shape = SubResource("WorldBoundaryShape2D_6s867")
 
-[connection signal="mobPath" from="." to="EnemyCharacter" method="_on_main_mob_path"]
 [connection signal="death" from="PlayerCharacter" to="." method="_on_player_character_death"]
-[connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
-[connection signal="area_entered" from="PlayerCharacter/Sword Hitbox" to="EnemyCharacter" method="_on_area_2d_area_entered"]
-[connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]
