@@ -24,9 +24,6 @@ func makepath() -> void:
 func _on_timer_timeout():
 	makepath()
 
-func _on_area_2d_body_entered(body):
-	emit_signal("hit")
-
 func takeDamage(damage):
 	enemyHealth -= damage
 	print(enemyHealth)
@@ -34,7 +31,3 @@ func takeDamage(damage):
 		self.hide()
 		queue_free()
 
-
-func _on_area_2d_area_entered(area):
-	takeDamage(10)
-	
