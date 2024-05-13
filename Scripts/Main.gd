@@ -3,9 +3,11 @@ extends Node2D
 signal mobPath
 
 var mob_scene = preload("res://Scenes/Enemy.tscn").instantiate()
+var othermob = preload("res://enemy2.tscn").instantiate()
 
 func _ready():
 	add_child(mob_scene)
+	add_child(othermob)
 	emit_signal("mobPath")
 
 # Press escape to quit the game

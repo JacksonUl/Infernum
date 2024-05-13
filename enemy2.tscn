@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cedv1hi67rhgf"]
+
+[ext_resource type="Script" path="res://enemy2.gd" id="1_j1mjy"]
+[ext_resource type="Texture2D" uid="uid://dlvqu3oa75iny" path="res://Assets/Sprites/Player Sprite/Demon Sprite-3.png.png" id="2_dte1g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2nryv"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_j1mjy")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.147396, 0.173438)
+texture = ExtResource("2_dte1g")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2nryv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
