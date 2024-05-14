@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=10 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hn2fk"]
+size = Vector2(384, 352)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3sn1"]
 normal = Vector2(0.0045351, -0.99999)
@@ -38,6 +41,12 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
+
+[node name="Player Hitbox" type="Area2D" parent="PlayerCharacter"]
+
+[node name="Hitboxing" type="CollisionShape2D" parent="PlayerCharacter/Player Hitbox"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_hn2fk")
 
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 

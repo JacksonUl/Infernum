@@ -10,6 +10,7 @@ func _ready():
 	mob_scene.add_to_group("Enemys")
 	othermob.add_to_group("Enemys")
 	mob_scene.position = Vector2(100, 400)
+	othermob.position = Vector2(120, 900)
 	add_child(mob_scene)
 	add_child(othermob)
 	emit_signal("mobPath")
@@ -28,3 +29,4 @@ func _on_player_character_death():
 func _on_sword_hitbox_body_entered(body):
 	if body.is_in_group("Enemys"):
 		body.queue_free()
+		
