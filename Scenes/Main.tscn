@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=11 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
+[ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Themes/Kenney Blocks.ttf" id="5_tv5tm"]
 [ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hn2fk"]
@@ -32,7 +33,6 @@ script = ExtResource("1_a1j20")
 position = Vector2(1.05634, -1.05634)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
-position = Vector2(-388, -106)
 
 [node name="Sword Hitbox" parent="PlayerCharacter" instance=ExtResource("6_m45y3")]
 position = Vector2(4, 8)
@@ -66,5 +66,15 @@ shape = SubResource("WorldBoundaryShape2D_7dwmx")
 position = Vector2(0, -3)
 shape = SubResource("WorldBoundaryShape2D_6s867")
 
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -816.0
+offset_top = -475.0
+offset_right = -552.0
+offset_bottom = -345.0
+theme_override_fonts/font = ExtResource("5_tv5tm")
+theme_override_font_sizes/font_size = 25
+text = "Score: "
+
+[connection signal="enemykilled" from="." to="." method="_on_enemykilled"]
 [connection signal="death" from="PlayerCharacter" to="." method="_on_player_character_death"]
 [connection signal="body_entered" from="PlayerCharacter/Sword Hitbox" to="." method="_on_sword_hitbox_body_entered"]
