@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func makepath() -> void:
-	nav_agent.target_position = player.position
+	nav_agent.target_position = player.global_position
 
 
 func takeDamage(damage):

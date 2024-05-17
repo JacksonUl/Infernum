@@ -16,6 +16,8 @@ var mobScenePaths = [
 ]
 var mobInstances = []
 
+@onready var player := $PlayerCharacter as Node2D
+
 func _ready():
 	for path in mobScenePaths:
 		var mobInstance = path.instantiate()
@@ -55,14 +57,13 @@ func _on_sword_hitbox_body_entered(body):
 				else:
 					print("notFound")
 					
-		print(load(real_mob))
 		body.queue_free()
 		await get_tree().create_timer(3).timeout
 		spawnNewMob(load(real_mob))
 
 func spawnNewMob(index):
 	var new_instance = index.instantiate()
-	get_tree().get_root().add_child(new_instance)
+	add_child(new_instance)
 
   
 
