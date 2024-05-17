@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcxviwlx1hg71"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_6a3v2"]
-[ext_resource type="Texture2D" uid="uid://cecsx61135k3p" path="res://Assets/Sprites/Enemy Sprites/Enemy-1.png (1).png" id="2_lubfe"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rsqos"]
+[ext_resource type="Texture2D" uid="uid://cecsx61135k3p" path="res://Assets/Sprites/Enemy Sprites/Enemy-1.png (1).png" id="2_7e6ow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tafvy"]
 radius = 24.0
@@ -10,12 +10,12 @@ radius = 24.0
 radius = 13.0
 height = 52.0
 
-[node name="EnemyCharacter" type="CharacterBody2D"]
+[node name="0" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_6a3v2")
+script = ExtResource("1_rsqos")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -24,7 +24,7 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_tafvy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_lubfe")
+texture = ExtResource("2_7e6ow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.42109e-14, -4)
