@@ -8,6 +8,8 @@ var mob_string = ""
 var search_string = ""
 var real_mob
 var scene
+var borders = [-200, 450]
+var playerHealth = 100
 
 var mobScenePaths = [
 	preload("res://Scenes/1.tscn"),
@@ -54,11 +56,11 @@ func _on_sword_hitbox_body_entered(body):
 					
 		body.hide()
 		await get_tree().create_timer(0.5).timeout
-		body.position = Vector2(500, 300)
+		body.position = Vector2(randf_range(-750, 750), borders[randi() % borders.size()])
 		body.show()
 
-#func spawnNewMob(index):
-	#var new_instance = index.instantiate()
-	#add_child(new_instance)
-	
 
+func _on_player_hitbox_body_entered(body):
+	if body.is_in_group("Enemys"):
+		playerHealth -= 25
+		print(playerHealth)

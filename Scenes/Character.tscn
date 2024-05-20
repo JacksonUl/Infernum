@@ -451,6 +451,7 @@ script = ExtResource("1_547rp")
 [node name="PCHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_gwlbx")
+disabled = true
 
 [node name="PCSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)

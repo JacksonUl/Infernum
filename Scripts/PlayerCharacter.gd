@@ -5,7 +5,6 @@ signal attack
 
 signal death
 
-var health = 100
 var dir
 var dashcooldown = 0
 var dashing = false
@@ -101,9 +100,3 @@ func _process(_delta):
 		velocity *= 200
 	move_and_slide()
 	
-
-func _on_enemy_character_hit():
-	health -= 25
-	if health == 0:
-		queue_free()
-		emit_signal("death")
