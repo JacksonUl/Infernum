@@ -19,18 +19,14 @@ var mobInstances = []
 @onready var player := $PlayerCharacter as Node2D
 
 func _ready():
-	for path in mobScenePaths:
-		var mobInstance = path.instantiate()
-		mobInstances.append(mobInstance)
-		mobInstance.add_to_group("Enemies")
-		add_child(mobInstance) # Add the child here
-		emit_signal("SpawnNew", mobInstance)
-		spawnMobs()
+	for i in range(5):
+		for path in mobScenePaths:
+			var mobInstance = path.instantiate()
+			mobInstances.append(mobInstance)
+			mobInstance.add_to_group("Enemies")
+			add_child(mobInstance)
+			emit_signal("SpawnNew", mobInstance)
 
-func spawnMobs():
-	for mob in mobInstances:
-		add_child(mob)
-# Press escape to quit the game
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
@@ -45,30 +41,24 @@ func _on_sword_hitbox_body_entered(body):
 		
 		search_string = "0"
 		if mob_string.find(search_string) != -1:
-			real_mob = "res://Scenes/1.tscn"
+			real_mob = load("res://Scenes/1.tscn")
 		else:
 			search_string = "1"
 			if mob_string.find(search_string) != -1:
-				real_mob = "res://Scenes/2.tscn"
+				real_mob = load("res://Scenes/2.tscn")
 			else:
 				search_string = "2"
 				if mob_string.find(search_string) != -1:
-					real_mob = "res://Scenes/3.tscn"
-				else:
-					print("notFound")
+					real_mob = load("res://Scenes/3.tscn")
+	
 					
-		body.queue_free()
-		await get_tree().create_timer(3).timeout
-		spawnNewMob(load(real_mob))
+		body.hide()
+		await get_tree().create_timer(0.5).timeout
+		body.position = Vector2(500, 300)
+		body.show()
 
-func spawnNewMob(index):
-	var new_instance = index.instantiate()
-	add_child(new_instance)
-
-  
-
-	#print(mobInstances[index])
-	#var newMob = mobInstances[index]
-	#add_child(newMob)
-	#emit_signal("SpawnNew", newMob)
+#func spawnNewMob(index):
+	#var new_instance = index.instantiate()
+	#add_child(new_instance)
+	
 
