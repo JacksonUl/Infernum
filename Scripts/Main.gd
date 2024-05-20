@@ -2,41 +2,73 @@ extends Node2D
 
 signal mobPath
 signal enemyDamage(enemytype)
-signal enemykilled
+signal SpawnNew(newMob)
 
+var mob_string = ""
+var search_string = ""
+var real_mob
+var scene
 
-var score = 0
+var mobScenePaths = [
+	preload("res://Scenes/1.tscn"),
+	preload("res://Scenes/2.tscn"),
+	preload("res://Scenes/3.tscn")
+]
+var mobInstances = []
 
-var mob_scene = preload("res://Scenes/Enemy.tscn").instantiate()
-var othermob = preload("res://Scenes/enemy2.tscn").instantiate()
+@onready var player := $PlayerCharacter as Node2D
 
 func _ready():
-	mob_scene.add_to_group("Enemys")
-	othermob.add_to_group("Enemys")
-	mob_scene.position = Vector2(-500, 300)
-	othermob.position = Vector2(200, 500)
-	add_child(mob_scene)
-	add_child(othermob)
-	emit_signal("mobPath")
-	$ScoreLabel.text = ("Score: " + str(score))
-	
+	for path in mobScenePaths:
+		var mobInstance = path.instantiate()
+		mobInstances.append(mobInstance)
+		mobInstance.add_to_group("Enemies")
+		add_child(mobInstance) # Add the child here
+		emit_signal("SpawnNew", mobInstance)
+		spawnMobs()
 
+func spawnMobs():
+	for mob in mobInstances:
+		add_child(mob)
 # Press escape to quit the game
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
-		
 
 func _on_player_character_death():
 	get_tree().change_scene_to_file("res://Scenes/Prototype Scenes/Start.tscn")
 
-
 func _on_sword_hitbox_body_entered(body):
-	if body.is_in_group("Enemys"):
+	if body.is_in_group("Enemies"):
+		var mobIndex = mobInstances.find(body)
+		mob_string = str(mobIndex)
+		
+		search_string = "0"
+		if mob_string.find(search_string) != -1:
+			real_mob = "res://Scenes/1.tscn"
+		else:
+			search_string = "1"
+			if mob_string.find(search_string) != -1:
+				real_mob = "res://Scenes/2.tscn"
+			else:
+				search_string = "2"
+				if mob_string.find(search_string) != -1:
+					real_mob = "res://Scenes/3.tscn"
+				else:
+					print("notFound")
+					
 		body.queue_free()
-		emit_signal("enemykilled")
+		await get_tree().create_timer(3).timeout
+		spawnNewMob(load(real_mob))
 
+func spawnNewMob(index):
+	var new_instance = index.instantiate()
+	add_child(new_instance)
 
-func _on_enemykilled():
-	score += 1
-	$ScoreLabel.text = ("Score: " + str(score))
+  
+
+	#print(mobInstances[index])
+	#var newMob = mobInstances[index]
+	#add_child(newMob)
+	#emit_signal("SpawnNew", newMob)
+

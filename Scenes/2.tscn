@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cedv1hi67rhgf"]
 
-[ext_resource type="Script" path="res://Scripts/enemy2.gd" id="1_r2kl2"]
-[ext_resource type="Texture2D" uid="uid://cwuqgkye6v3bb" path="res://Assets/Sprites/Enemy Sprites/Enemy-2.png.png" id="2_37e3e"]
+[ext_resource type="Script" path="res://Scripts/enemy2.gd" id="1_c8jap"]
+[ext_resource type="Texture2D" uid="uid://cwuqgkye6v3bb" path="res://Assets/Sprites/Enemy Sprites/Enemy-2.png.png" id="2_yru10"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2lefe"]
 radius = 17.0
@@ -10,10 +10,10 @@ radius = 17.0
 radius = 17.0
 height = 34.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="1" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_r2kl2")
+script = ExtResource("1_c8jap")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -22,7 +22,7 @@ shape = SubResource("CircleShape2D_2lefe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 6)
-texture = ExtResource("2_37e3e")
+texture = ExtResource("2_yru10")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
