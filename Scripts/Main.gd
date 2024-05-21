@@ -67,11 +67,13 @@ func _on_sword_hitbox_body_entered(body):
 		body.show()
 
 
-func _on_player_hitbox_body_entered(body):
+func _on_killed():
+	$ScoreCounter.text = ("Score: "+ str(killcount))
+
+
+func _on_player_health_body_entered(body):
+	print(body)
 	if body.is_in_group("Enemys"):
 		playerHealth -= 25
 		print(playerHealth)
 
-
-func _on_killed():
-	$ScoreCounter.text = ("Score: "+ str(killcount))
