@@ -3,6 +3,8 @@ extends Node2D
 signal mobPath
 signal enemyDamage(enemytype)
 signal SpawnNew(newMob)
+signal killed
+
 
 var mob_string = ""
 var search_string = ""
@@ -10,6 +12,7 @@ var real_mob
 var scene
 var borders = [-200, 450]
 var playerHealth = 100
+var killcount = 0
 
 var mobScenePaths = [
 	preload("res://Scenes/1.tscn"),
@@ -21,6 +24,7 @@ var mobInstances = []
 @onready var player := $PlayerCharacter as Node2D
 
 func _ready():
+	emit_signal("killed")
 	for i in range(5):
 		for path in mobScenePaths:
 			var mobInstance = path.instantiate()
@@ -40,7 +44,10 @@ func _on_sword_hitbox_body_entered(body):
 	if body.is_in_group("Enemies"):
 		var mobIndex = mobInstances.find(body)
 		mob_string = str(mobIndex)
+		killcount += 1
+		emit_signal("killed")
 		
+
 		search_string = "0"
 		if mob_string.find(search_string) != -1:
 			real_mob = load("res://Scenes/1.tscn")
@@ -64,3 +71,7 @@ func _on_player_hitbox_body_entered(body):
 	if body.is_in_group("Enemys"):
 		playerHealth -= 25
 		print(playerHealth)
+
+
+func _on_killed():
+	$ScoreCounter.text = ("Score: "+ str(killcount))
