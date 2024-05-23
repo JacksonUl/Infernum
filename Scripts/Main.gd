@@ -79,3 +79,5 @@ func _on_killed():
 func _on_player_health_area_entered(area):
 	playerHealth -= 10
 	$HealthCounter.text = ("Health: "+ str(playerHealth))
+	if playerHealth <= 0:
+		_on_player_character_death()
