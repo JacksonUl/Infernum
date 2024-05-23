@@ -1,17 +1,9 @@
-[gd_resource type="FontFile" format=3 uid="uid://dnorvdtbi3kf5"]
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://fonts/connection_ii/ConnectionII.otf" type="DynamicFontData" id=1]
 
 [resource]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/44/0 = Vector2(0, 0)
-cache/0/44/0/ascent = 0.0
-cache/0/44/0/descent = 0.0
-cache/0/44/0/underline_position = 0.0
-cache/0/44/0/underline_thickness = 0.0
-cache/0/44/0/scale = 1.0
-cache/0/44/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/44/0/kerning_overrides/44/0 = Vector2(0, 0)
+
+size = 30
+font_data = ExtResource( 1 )
+
