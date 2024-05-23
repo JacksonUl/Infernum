@@ -25,6 +25,7 @@ var mobInstances = []
 @onready var player := $PlayerCharacter as Node2D
 
 func _ready():
+	
 	emit_signal("killed")
 	for i in range(40):
 		for path in mobScenePaths:

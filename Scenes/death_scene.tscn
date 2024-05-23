@@ -1,0 +1,71 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqm7cnah2l05f"]
+
+[ext_resource type="Texture2D" uid="uid://bi7jggppmm8jk" path="res://Assets/DeathScreenBeta/DeathScreen1.png" id="1_puhxh"]
+[ext_resource type="Texture2D" uid="uid://ollqkhwp6wbt" path="res://Assets/DeathScreenBeta/DeathScreen2.png" id="2_il7xy"]
+[ext_resource type="Texture2D" uid="uid://ddq6hh0p3i1at" path="res://Assets/DeathScreenBeta/DeathScreen3.png" id="3_jjy12"]
+[ext_resource type="Texture2D" uid="uid://cux6pt4fnd64u" path="res://Assets/DeathScreenBeta/DeathScreen4.png" id="4_yo41n"]
+[ext_resource type="Texture2D" uid="uid://lwb3sy16n3p1" path="res://Assets/DeathScreenBeta/DeathScreen5.png" id="5_ddn1a"]
+[ext_resource type="Texture2D" uid="uid://cb4m2iteh4ecj" path="res://Assets/DeathScreenBeta/DeathScreen6.png" id="6_4q2l0"]
+[ext_resource type="Texture2D" uid="uid://dwfppctv3ef37" path="res://Assets/DeathScreenBeta/DeathScreen7.png" id="7_gf30g"]
+[ext_resource type="Texture2D" uid="uid://bwcuwhimxaet1" path="res://Assets/DeathScreenBeta/DeathScreen8.png" id="8_8qaqq"]
+[ext_resource type="Texture2D" uid="uid://cqpmrw22s3m06" path="res://Assets/DeathScreenBeta/DeathScreen9.png" id="9_qodqo"]
+[ext_resource type="Texture2D" uid="uid://c2flgqmk1cusa" path="res://Assets/DeathScreenBeta/DeathScreen10.png" id="10_ybsi3"]
+[ext_resource type="Texture2D" uid="uid://cpwgw4332isw8" path="res://Assets/DeathScreenBeta/DeathScreen11.png" id="11_5orrc"]
+[ext_resource type="Texture2D" uid="uid://cosnpv5acuu3x" path="res://Assets/DeathScreenBeta/DeathScreen12.png" id="12_rg8f5"]
+[ext_resource type="Texture2D" uid="uid://cx4q0uj6stxki" path="res://Assets/DeathScreenBeta/DeathScreen13.png" id="13_tdmo5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bnsaa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_puhxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_il7xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jjy12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yo41n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ddn1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4q2l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gf30g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8qaqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qodqo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ybsi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5orrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rg8f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tdmo5")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 10.0
+}]
+
+[node name="DeathScene" type="AnimatedSprite2D"]
+position = Vector2(1285.5, 806)
+scale = Vector2(0.663281, 0.41875)
+sprite_frames = SubResource("SpriteFrames_bnsaa")
+animation = &"Death"
