@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
-[ext_resource type="PackedScene" uid="uid://dcxviwlx1hg71" path="res://Scenes/Enemy.tscn" id="5_e6kos"]
-[ext_resource type="PackedScene" uid="uid://dwmdr5qh5lv7b" path="res://Scenes/Prototype Scenes/hitbox_attack.tscn" id="5_snsl4"]
+[ext_resource type="PackedScene" uid="uid://dhnhwfn20dfd4" path="res://Scenes/player_health.tscn" id="5_h8xar"]
+[ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Themes/Kenney Blocks.ttf" id="5_steij"]
 [ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b3sn1"]
@@ -23,7 +23,7 @@ distance = -980.0
 normal = Vector2(-0.999987, -0.00499994)
 distance = -970.998
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["Enemys"]]
 position = Vector2(-3, 0)
 script = ExtResource("1_a1j20")
 
@@ -33,17 +33,15 @@ position = Vector2(1.05634, -1.05634)
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_bkncb")]
 position = Vector2(-388, -106)
 
-[node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
-
-[node name="Hitbox Attack2" parent="PlayerCharacter" instance=ExtResource("5_snsl4")]
-
-[node name="Area2D" parent="PlayerCharacter" instance=ExtResource("6_m45y3")]
+[node name="Sword Hitbox" parent="PlayerCharacter" instance=ExtResource("6_m45y3")]
 position = Vector2(4, 8)
 scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 2
 
-[node name="EnemyCharacter" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_e6kos")]
-position = Vector2(-27, 40)
-player = NodePath("../PlayerCharacter/PathfindingAnchor")
+[node name="PathfindingAnchor" type="Node2D" parent="PlayerCharacter"]
+
+[node name="Player Health" parent="PlayerCharacter" instance=ExtResource("5_h8xar")]
 
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
@@ -63,6 +61,26 @@ shape = SubResource("WorldBoundaryShape2D_7dwmx")
 position = Vector2(0, -3)
 shape = SubResource("WorldBoundaryShape2D_6s867")
 
-[connection signal="damage" from="PlayerCharacter/Hitbox Attack2" to="EnemyCharacter" method="_on_hitbox_attack_2_damage"]
-[connection signal="area_entered" from="PlayerCharacter/Area2D" to="EnemyCharacter" method="_on_area_2d_area_entered"]
-[connection signal="hit" from="EnemyCharacter" to="PlayerCharacter" method="_on_enemy_character_hit"]
+[node name="ScoreCounter" type="Label" parent="."]
+offset_left = -840.0
+offset_top = -476.0
+offset_right = -670.0
+offset_bottom = -410.0
+theme_override_fonts/font = ExtResource("5_steij")
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+
+[node name="HealthCounter" type="Label" parent="."]
+offset_left = -871.0
+offset_top = -436.0
+offset_right = -641.0
+offset_bottom = -370.0
+theme_override_fonts/font = ExtResource("5_steij")
+theme_override_font_sizes/font_size = 30
+text = "Health: 100"
+
+[connection signal="SpawnNew" from="." to="." method="_on_spawn_new"]
+[connection signal="killed" from="." to="." method="_on_killed"]
+[connection signal="death" from="PlayerCharacter" to="." method="_on_player_character_death"]
+[connection signal="body_entered" from="PlayerCharacter/Sword Hitbox" to="." method="_on_sword_hitbox_body_entered"]
+[connection signal="area_entered" from="PlayerCharacter/Player Health" to="." method="_on_player_health_area_entered"]

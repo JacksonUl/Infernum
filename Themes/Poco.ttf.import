@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://wayuwpkw3fyj"
-path="res://.godot/imported/Poco.ttf-f4c26eaee292eb435ad91c093887e962.fontdata"
+path="res://.godot/imported/Poco.ttf-0b3b5efd239e543d20e70e8d90b2009b.fontdata"
 
 [deps]
 
-source_file="res://Scripts/Poco.ttf"
-dest_files=["res://.godot/imported/Poco.ttf-f4c26eaee292eb435ad91c093887e962.fontdata"]
+source_file="res://Themes/Poco.ttf"
+dest_files=["res://.godot/imported/Poco.ttf-0b3b5efd239e543d20e70e8d90b2009b.fontdata"]
 
 [params]
 

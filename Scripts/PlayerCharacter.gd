@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 signal attack
 
-var health = 100
+signal death
+
 var dir
 var dashcooldown = 0
 var dashing = false
@@ -18,6 +19,11 @@ func _input(event):
 		if dir == "right":
 			$PCSprite.play("SwRIGHT")
 			#dir = "none"
+		if dir == "down":
+			$PCSprite.play("SwDOWN")
+			
+		if dir == "up":
+			$PCSprite.play("SwUP")
 	
 	if event.is_action_pressed("Move_Left"):
 		velocity.x = -200
@@ -32,12 +38,12 @@ func _input(event):
 	if event.is_action_pressed("Move_Up"):
 		velocity.y = -200
 		$PCSprite.play("Up")
-		dir = "right"
+		dir = "up"
 
 	if event.is_action_pressed("Move_Down"):
 		velocity.y = 200
 		$PCSprite.play("Down")
-		dir = "right"
+		dir = "down"
 
 
 	if event.is_action_released("Move_Left"):
@@ -79,9 +85,10 @@ func _input(event):
 
 
 	if event.is_action_pressed("Sprint"):
-		sprinting = true
-	if event.is_action_released("Sprint"):
-		sprinting = false
+		if sprinting == false:
+			sprinting = true
+		elif sprinting == true:
+			sprinting = false
 
 func _process(_delta):
 	velocity = velocity.normalized()
@@ -93,11 +100,3 @@ func _process(_delta):
 		velocity *= 200
 	move_and_slide()
 	
-
-func _on_enemy_character_hit():
-	health -= 25
-	if health == 0:
-		$PCSprite.visible = false
-	$PCHitbox.disabled = true
-	await get_tree().create_timer(.25).timeout
-	$PCHitbox.disabled = false

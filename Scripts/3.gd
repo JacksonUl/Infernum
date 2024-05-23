@@ -19,10 +19,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func makepath() -> void:
-	nav_agent.target_position = player.position
+	nav_agent.target_position = player.global_position
 
-func _on_timer_timeout():
-	makepath()
 
 func takeDamage(damage):
 	enemyHealth -= damage
@@ -30,4 +28,7 @@ func takeDamage(damage):
 	if enemyHealth <= 0:
 		self.hide()
 		queue_free()
+		
 
+func _on_timer_timeout():
+	makepath()
