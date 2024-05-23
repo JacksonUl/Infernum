@@ -13,6 +13,7 @@ var scene
 var borders = [-200, 450]
 var playerHealth = 100
 var killcount = 0
+var adjust
 
 var mobScenePaths = [
 	preload("res://Scenes/1.tscn"),
