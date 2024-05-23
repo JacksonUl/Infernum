@@ -6,6 +6,8 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgfu2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y47oo"]
+radius = 23.0
+height = 54.0
 
 [node name="2" type="CharacterBody2D"]
 collision_layer = 2

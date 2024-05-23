@@ -13,7 +13,7 @@ var scene
 var borders = [-200, 450]
 var playerHealth = 100
 var killcount = 0
-var adjust
+var incriment = 0.5
 
 var mobScenePaths = [
 	preload("res://Scenes/1.tscn"),
@@ -26,13 +26,15 @@ var mobInstances = []
 
 func _ready():
 	emit_signal("killed")
-	for i in range(5):
+	for i in range(40):
 		for path in mobScenePaths:
 			var mobInstance = path.instantiate()
 			mobInstances.append(mobInstance)
 			mobInstance.add_to_group("Enemies")
+			mobInstance.position = Vector2(randf_range(-750, 750), borders[randi() % borders.size()])
 			add_child(mobInstance)
 			emit_signal("SpawnNew", mobInstance)
+			await get_tree().create_timer(randf_range(0.1 + incriment, 0.5 + incriment)).timeout
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -43,6 +45,7 @@ func _on_player_character_death():
 
 func _on_sword_hitbox_body_entered(body):
 	if body.is_in_group("Enemies"):
+		incriment -= 0.01
 		var mobIndex = mobInstances.find(body)
 		mob_string = str(mobIndex)
 		killcount += 1
@@ -72,9 +75,7 @@ func _on_killed():
 	$ScoreCounter.text = ("Score: "+ str(killcount))
 
 
-func _on_player_health_body_entered(body):
-	print(body)
-	if body.is_in_group("Enemys"):
-		playerHealth -= 25
-		print(playerHealth)
 
+func _on_player_health_area_entered(area):
+	playerHealth -= 10
+	$HealthCounter.text = ("Health: "+ str(playerHealth))

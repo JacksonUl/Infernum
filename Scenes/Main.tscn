@@ -70,8 +70,17 @@ theme_override_fonts/font = ExtResource("5_steij")
 theme_override_font_sizes/font_size = 30
 text = "Score: 0"
 
+[node name="HealthCounter" type="Label" parent="."]
+offset_left = -871.0
+offset_top = -436.0
+offset_right = -641.0
+offset_bottom = -370.0
+theme_override_fonts/font = ExtResource("5_steij")
+theme_override_font_sizes/font_size = 30
+text = "Health: 100"
+
 [connection signal="SpawnNew" from="." to="." method="_on_spawn_new"]
 [connection signal="killed" from="." to="." method="_on_killed"]
 [connection signal="death" from="PlayerCharacter" to="." method="_on_player_character_death"]
 [connection signal="body_entered" from="PlayerCharacter/Sword Hitbox" to="." method="_on_sword_hitbox_body_entered"]
-[connection signal="body_entered" from="PlayerCharacter/Player Health" to="." method="_on_player_health_body_entered"]
+[connection signal="area_entered" from="PlayerCharacter/Player Health" to="." method="_on_player_health_area_entered"]
