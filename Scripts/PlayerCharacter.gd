@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 
 signal attack
-
+signal room1
+signal room2
+signal room3
 signal death
 
 var dir
@@ -100,3 +102,17 @@ func _process(_delta):
 		velocity *= 200
 	move_and_slide()
 	
+
+
+func _on_door_1_area_entered(area):
+	emit_signal("room1")
+
+	
+
+func _on_door_2_area_entered(area):
+	emit_signal("room2")
+
+	
+func _on_door_3_area_entered(area):
+	emit_signal("room3")
+

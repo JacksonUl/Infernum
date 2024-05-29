@@ -25,7 +25,11 @@ var mobInstances = []
 @onready var player := $PlayerCharacter as Node2D
 
 func _ready():
+	$Level1.hide()
+	spawnMobs()
 	
+
+func spawnMobs():
 	emit_signal("killed")
 	for i in range(40):
 		for path in mobScenePaths:
@@ -82,3 +86,25 @@ func _on_player_health_area_entered(area):
 	$HealthCounter.text = ("Health: "+ str(playerHealth))
 	if playerHealth <= 0:
 		_on_player_character_death()
+		
+
+
+
+func _on_player_character_room_1():
+	$"Test Level".hide()
+	$Level1.show()
+	KillMobs()
+
+
+func _on_player_character_room_2():
+		print("r2")
+
+
+func _on_player_character_room_3():
+		print("r3")
+
+func KillMobs():
+	for i in mobInstances:
+		i.queue_free()
+		
+	mobInstances.clear()
