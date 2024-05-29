@@ -10,10 +10,11 @@ var mob_string = ""
 var search_string = ""
 var real_mob
 var scene
-var borders = [-200, 450]
+var borders = []
 var playerHealth = 100
 var killcount = 0
 var incriment = 0.5
+var room = 0
 
 var mobScenePaths = [
 	preload("res://Scenes/1.tscn"),
@@ -25,12 +26,20 @@ var mobInstances = []
 @onready var player := $PlayerCharacter as Node2D
 
 func _ready():
-	$Level1.hide()
+	$Level1.position.x = 3000
 	spawnMobs()
 	
 
 func spawnMobs():
 	emit_signal("killed")
+	if room == 0:
+		borders = [-200, 450]
+	if room == 1:
+		borders = [0, 450]
+	if room == 2:
+		borders = [-200, 450]
+	if room == 3:
+		borders = [-200, 450]
 	for i in range(40):
 		for path in mobScenePaths:
 			var mobInstance = path.instantiate()
@@ -71,9 +80,9 @@ func _on_sword_hitbox_body_entered(body):
 	
 					
 		body.hide()
-		await get_tree().create_timer(0.5).timeout
-		body.position = Vector2(randf_range(-750, 750), borders[randi() % borders.size()])
-		body.show()
+		if body.is_inside_tree():
+			body.position = Vector2(randf_range(-750, 750), borders[randi() % borders.size()])
+			body.show()
 
 
 func _on_killed():
@@ -91,8 +100,9 @@ func _on_player_health_area_entered(area):
 
 
 func _on_player_character_room_1():
-	$"Test Level".hide()
-	$Level1.show()
+	$"Test Level".position.x = 3000
+	$Level1.position.x = 0
+	room = 1
 	KillMobs()
 
 
@@ -108,3 +118,10 @@ func KillMobs():
 		i.queue_free()
 		
 	mobInstances.clear()
+
+
+func _on_player_character_room_0():
+	$"Test Level".position.x = 0
+	$Level1.position.x = 3000
+	room = 0
+	KillMobs()

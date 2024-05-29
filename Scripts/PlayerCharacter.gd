@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 signal attack
+signal room0
 signal room1
 signal room2
 signal room3
@@ -107,12 +108,12 @@ func _process(_delta):
 func _on_door_1_area_entered(area):
 	emit_signal("room1")
 
-	
-
 func _on_door_2_area_entered(area):
 	emit_signal("room2")
-
 	
 func _on_door_3_area_entered(area):
 	emit_signal("room3")
-
+	
+func _on_area_2d_area_entered(area):
+	emit_signal("room0")
+	

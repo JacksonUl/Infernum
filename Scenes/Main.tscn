@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=15 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
@@ -29,6 +29,9 @@ distance = -980.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6s867"]
 normal = Vector2(-0.999987, -0.00499994)
 distance = -970.998
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbv6a"]
+size = Vector2(53, 46)
 
 [node name="Main" type="Node2D" groups=["Enemys"]]
 position = Vector2(-3, 0)
@@ -76,7 +79,7 @@ collision_mask = 2
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorders"]
-position = Vector2(2, 799)
+position = Vector2(2, 804)
 shape = SubResource("WorldBoundaryShape2D_b3sn1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBorders"]
@@ -109,14 +112,27 @@ theme_override_fonts/font = ExtResource("5_steij")
 theme_override_font_sizes/font_size = 30
 text = "Health: 100"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4, 0)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(3, 455)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7, -8)
+shape = SubResource("RectangleShape2D_tbv6a")
+
 [connection signal="SpawnNew" from="." to="." method="_on_spawn_new"]
 [connection signal="killed" from="." to="." method="_on_killed"]
 [connection signal="area_entered" from="Test Level/Door1" to="PlayerCharacter" method="_on_door_1_area_entered"]
 [connection signal="area_entered" from="Test Level/Door2" to="PlayerCharacter" method="_on_door_2_area_entered"]
 [connection signal="area_entered" from="Test Level/Door3" to="PlayerCharacter" method="_on_door_3_area_entered"]
 [connection signal="death" from="PlayerCharacter" to="." method="_on_player_character_death"]
+[connection signal="room0" from="PlayerCharacter" to="." method="_on_player_character_room_0"]
 [connection signal="room1" from="PlayerCharacter" to="." method="_on_player_character_room_1"]
 [connection signal="room2" from="PlayerCharacter" to="." method="_on_player_character_room_2"]
 [connection signal="room3" from="PlayerCharacter" to="." method="_on_player_character_room_3"]
 [connection signal="body_entered" from="PlayerCharacter/Sword Hitbox" to="." method="_on_sword_hitbox_body_entered"]
 [connection signal="area_entered" from="PlayerCharacter/Player Health" to="." method="_on_player_health_area_entered"]
+[connection signal="area_entered" from="Area2D" to="PlayerCharacter" method="_on_area_2d_area_entered"]
