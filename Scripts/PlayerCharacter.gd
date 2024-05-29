@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 signal attack
-signal room0
+signal room0(area)
 signal room1
 signal room2
 signal room3
@@ -115,5 +115,13 @@ func _on_door_3_area_entered(area):
 	emit_signal("room3")
 	
 func _on_area_2d_area_entered(area):
-	emit_signal("room0")
+	emit_signal("room0", area)
 	
+
+
+func _on_room_2out_area_entered(area):
+	emit_signal("room0", area)
+
+
+func _on_room_3out_area_entered(area):
+	emit_signal("room0", area)

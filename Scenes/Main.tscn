@@ -1,12 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=19 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
 [ext_resource type="PackedScene" uid="uid://cjctvnkne043w" path="res://Scenes/Character.tscn" id="2_bkncb"]
 [ext_resource type="PackedScene" uid="uid://dn85l6rdmas0q" path="res://Scenes/Level1.tscn" id="3_copni"]
+[ext_resource type="PackedScene" uid="uid://dh4k6exdkjygh" path="res://Scenes/Level2.tscn" id="3_ygl1u"]
+[ext_resource type="PackedScene" uid="uid://bqs1j4jffqljh" path="res://Scenes/Level3.tscn" id="4_tqu28"]
 [ext_resource type="PackedScene" uid="uid://dhnhwfn20dfd4" path="res://Scenes/player_health.tscn" id="5_h8xar"]
 [ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Themes/Kenney Blocks.ttf" id="5_steij"]
 [ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbv6a"]
+size = Vector2(53, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvoxt"]
+size = Vector2(33, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agbw7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a102c"]
 size = Vector2(42.5, 57.75)
@@ -30,14 +40,34 @@ distance = -980.0
 normal = Vector2(-0.999987, -0.00499994)
 distance = -970.998
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbv6a"]
-size = Vector2(53, 46)
-
 [node name="Main" type="Node2D" groups=["Enemys"]]
 position = Vector2(-3, 0)
 script = ExtResource("1_a1j20")
 
 [node name="Level1" parent="." instance=ExtResource("3_copni")]
+
+[node name="Room1OUT" type="Area2D" parent="Level1"]
+position = Vector2(3, 498)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1/Room1OUT"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_tbv6a")
+
+[node name="Level2" parent="." instance=ExtResource("3_ygl1u")]
+
+[node name="Room2OUT" type="Area2D" parent="Level2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2/Room2OUT"]
+position = Vector2(1, 502)
+shape = SubResource("RectangleShape2D_yvoxt")
+
+[node name="Level3" parent="." instance=ExtResource("4_tqu28")]
+
+[node name="Room3OUT" type="Area2D" parent="Level3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3/Room3OUT"]
+position = Vector2(3, 490)
+shape = SubResource("RectangleShape2D_agbw7")
 
 [node name="Test Level" parent="." instance=ExtResource("1_2cbwi")]
 position = Vector2(1.05634, -1.05634)
@@ -116,15 +146,11 @@ text = "Health: 100"
 position = Vector2(4, 0)
 zoom = Vector2(1.5, 1.5)
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(3, 455)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(7, -8)
-shape = SubResource("RectangleShape2D_tbv6a")
-
 [connection signal="SpawnNew" from="." to="." method="_on_spawn_new"]
 [connection signal="killed" from="." to="." method="_on_killed"]
+[connection signal="area_entered" from="Level1/Room1OUT" to="PlayerCharacter" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Level2/Room2OUT" to="PlayerCharacter" method="_on_room_2out_area_entered"]
+[connection signal="area_entered" from="Level3/Room3OUT" to="PlayerCharacter" method="_on_room_3out_area_entered"]
 [connection signal="area_entered" from="Test Level/Door1" to="PlayerCharacter" method="_on_door_1_area_entered"]
 [connection signal="area_entered" from="Test Level/Door2" to="PlayerCharacter" method="_on_door_2_area_entered"]
 [connection signal="area_entered" from="Test Level/Door3" to="PlayerCharacter" method="_on_door_3_area_entered"]
@@ -135,4 +161,3 @@ shape = SubResource("RectangleShape2D_tbv6a")
 [connection signal="room3" from="PlayerCharacter" to="." method="_on_player_character_room_3"]
 [connection signal="body_entered" from="PlayerCharacter/Sword Hitbox" to="." method="_on_sword_hitbox_body_entered"]
 [connection signal="area_entered" from="PlayerCharacter/Player Health" to="." method="_on_player_health_area_entered"]
-[connection signal="area_entered" from="Area2D" to="PlayerCharacter" method="_on_area_2d_area_entered"]

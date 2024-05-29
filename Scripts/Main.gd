@@ -27,25 +27,30 @@ var mobInstances = []
 
 func _ready():
 	$Level1.position.x = 3000
+	$Level2.position.x = 6000
+	$Level3.position.x = 9000
 	spawnMobs()
 	
 
 func spawnMobs():
 	emit_signal("killed")
+	borders = []
+	
 	if room == 0:
 		borders = [-200, 450]
 	if room == 1:
-		borders = [0, 450]
+		borders = [0, 1]
 	if room == 2:
 		borders = [-200, 450]
 	if room == 3:
 		borders = [-200, 450]
+		
 	for i in range(40):
 		for path in mobScenePaths:
 			var mobInstance = path.instantiate()
 			mobInstances.append(mobInstance)
 			mobInstance.add_to_group("Enemies")
-			mobInstance.position = Vector2(randf_range(-750, 750), borders[randi() % borders.size()])
+			mobInstance.position = Vector2(randf_range(-750, -50), borders[randi() % borders.size()])
 			add_child(mobInstance)
 			emit_signal("SpawnNew", mobInstance)
 			await get_tree().create_timer(randf_range(0.1 + incriment, 0.5 + incriment)).timeout
@@ -95,11 +100,10 @@ func _on_player_health_area_entered(area):
 	$HealthCounter.text = ("Health: "+ str(playerHealth))
 	if playerHealth <= 0:
 		_on_player_character_death()
-		
-
 
 
 func _on_player_character_room_1():
+	playerHealth+= 10
 	$"Test Level".position.x = 3000
 	$Level1.position.x = 0
 	room = 1
@@ -107,21 +111,32 @@ func _on_player_character_room_1():
 
 
 func _on_player_character_room_2():
-		print("r2")
+	playerHealth+= 10
+	$"Test Level".position.x = 3000
+	$Level2.position.x = 0
+	room = 2
+	KillMobs()
 
 
 func _on_player_character_room_3():
-		print("r3")
+	playerHealth+= 10
+	$"Test Level".position.x = 3000
+	$Level3.position.x = 0
+	room = 3
+	KillMobs()
 
 func KillMobs():
 	for i in mobInstances:
 		i.queue_free()
-		
+
 	mobInstances.clear()
 
 
-func _on_player_character_room_0():
+func _on_player_character_room_0(area):
+	playerHealth+= 10
 	$"Test Level".position.x = 0
+	$Level2.position.x = 6000
 	$Level1.position.x = 3000
+	$Level3.position.x = 9000
 	room = 0
 	KillMobs()
