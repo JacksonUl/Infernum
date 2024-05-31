@@ -458,5 +458,6 @@ sprite_frames = SubResource("SpriteFrames_uardo")
 animation = &"Down"
 
 [node name="HUD" parent="." instance=ExtResource("7_05vfw")]
+visible = false
 position = Vector2(0, -128)
 scale = Vector2(4, 4)

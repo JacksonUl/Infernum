@@ -171,6 +171,8 @@ func _on_area_2d_2_area_entered(area):
 	$Item.play()
 	$Collectables.position.x = 6000
 	playerHealth+= 60
+	if playerHealth > 100:
+		playerHealth = 100
 	$HealthCounter.text = ("Health: "+ str(playerHealth))
 	
 	await get_tree().create_timer(10).timeout
