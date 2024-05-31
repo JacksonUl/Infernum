@@ -24,6 +24,7 @@ color = Color(0.133333, 0.105882, 0.121569, 0.862745)
 metadata/_edit_lock_ = true
 
 [node name="STartButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1365.0
 offset_top = 1458.0
 offset_right = 2390.0
