@@ -35,6 +35,7 @@ func _ready():
 	$Level2.position.x = 6000
 	$Level3.position.x = 9000
 	spawnMobs()
+	lugh()
 
 	
 
@@ -60,6 +61,7 @@ func spawnMobs():
 			add_child(mobInstance)
 			emit_signal("SpawnNew", mobInstance)
 			await get_tree().create_timer(randf_range(0.1 + incriment, 0.5 + incriment)).timeout
+			
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -69,12 +71,14 @@ func _on_player_character_death():
 	get_tree().change_scene_to_file("res://Scenes/Prototype Scenes/Start.tscn")
 
 func _on_sword_hitbox_body_entered(body):
+	$Sword.play()
 	if body.is_in_group("Enemies"):
 		incriment -= 0.01
 		var mobIndex = mobInstances.find(body)
 		mob_string = str(mobIndex)
 		killcount += 1
 		emit_signal("killed")
+		$GoblinDie.play()
 		
 
 		search_string = "0"
@@ -104,6 +108,7 @@ func _on_killed():
 
 
 func _on_player_health_area_entered(area):
+	$GoblinAttack.play()
 	playerHealth -= 10
 	$HealthCounter.text = ("Health: "+ str(playerHealth))
 	if playerHealth <= 0:
@@ -111,6 +116,7 @@ func _on_player_health_area_entered(area):
 
 
 func _on_player_character_room_1():
+	sound()
 	playerHealth+= 10
 	$"Test Level".position.x = 3000
 	$Level1.position.x = 0
@@ -118,7 +124,9 @@ func _on_player_character_room_1():
 	KillMobs()
 
 
+
 func _on_player_character_room_2():
+	sound()
 	playerHealth+= 10
 	$"Test Level".position.x = 3000
 	$Level2.position.x = 0
@@ -126,12 +134,15 @@ func _on_player_character_room_2():
 	KillMobs()
 
 
+
 func _on_player_character_room_3():
+	sound()
 	playerHealth+= 10
 	$"Test Level".position.x = 3000
 	$Level3.position.x = 0
 	room = 3
 	KillMobs()
+
 
 func KillMobs():
 	for i in mobInstances:
@@ -141,6 +152,7 @@ func KillMobs():
 
 
 func _on_player_character_room_0(area):
+	sound()
 	playerHealth+= 10
 	$"Test Level".position.x = 0
 	$Level2.position.x = 6000
@@ -156,6 +168,7 @@ func Collectables():
 	
 
 func _on_area_2d_2_area_entered(area):
+	$Item.play()
 	$Collectables.position.x = 6000
 	playerHealth+= 60
 	$HealthCounter.text = ("Health: "+ str(playerHealth))
@@ -164,3 +177,11 @@ func _on_area_2d_2_area_entered(area):
 	
 	Collectables()
 	
+	
+func sound():
+	$Portal.play()
+	
+func lugh():
+	for k in range(100):
+		$GoblinCackle.play()
+		await get_tree().create_timer(5).timeout

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpgdmnt5ei0u5"]
+[gd_scene load_steps=28 format=3 uid="uid://cpgdmnt5ei0u5"]
 
 [ext_resource type="PackedScene" uid="uid://6tkl60u4774q" path="res://Scenes/Level Test.tscn" id="1_2cbwi"]
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_a1j20"]
@@ -10,6 +10,12 @@
 [ext_resource type="FontFile" uid="uid://mi5jgyfyk2gs" path="res://Themes/Kenney Blocks.ttf" id="5_steij"]
 [ext_resource type="PackedScene" uid="uid://bsui4w6w367gh" path="res://Scenes/hitbox.tscn" id="6_m45y3"]
 [ext_resource type="PackedScene" uid="uid://c0xhpxa728e2h" path="res://Scenes/collectables.tscn" id="10_a0xlw"]
+[ext_resource type="AudioStream" uid="uid://ntbemybdn8as" path="res://Sound/sword-slash-with-metallic-impact-185435.mp3" id="11_1hbp7"]
+[ext_resource type="AudioStream" uid="uid://cj0f631mbjoh8" path="res://Sound/the-portal-90750.mp3" id="12_0vcgb"]
+[ext_resource type="AudioStream" uid="uid://dsy76lja783ru" path="res://Sound/goblin-death-6729.mp3" id="13_dluph"]
+[ext_resource type="AudioStream" uid="uid://orb1mr554dix" path="res://Sound/small-monster-attack-195712.mp3" id="14_05gmf"]
+[ext_resource type="AudioStream" uid="uid://rtjbkj1cl4gg" path="res://Sound/goblin-cackle-87566.mp3" id="15_t6mkm"]
+[ext_resource type="AudioStream" uid="uid://drcfpdqcqqreq" path="res://Sound/item-39146.mp3" id="16_ho24r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbv6a"]
 size = Vector2(53, 46)
@@ -166,6 +172,24 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collectables/Area2D2"]
 shape = SubResource("CircleShape2D_x5oys")
+
+[node name="Sword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1hbp7")
+
+[node name="Portal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_0vcgb")
+
+[node name="GoblinDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_dluph")
+
+[node name="GoblinAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_05gmf")
+
+[node name="GoblinCackle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_t6mkm")
+
+[node name="Item" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ho24r")
 
 [connection signal="SpawnNew" from="." to="." method="_on_spawn_new"]
 [connection signal="killed" from="." to="." method="_on_killed"]
