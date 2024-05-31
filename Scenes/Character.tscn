@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c3fck70mrecpo" path="res://Scenes/HUD.tscn" id="7_05vfw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwlbx"]
-size = Vector2(288, 264)
+size = Vector2(168, 264)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4x1g"]
 atlas = ExtResource("4_anhme")

@@ -16,20 +16,26 @@ var killcount = 0
 var incriment = 0.5
 var room = 0
 
+
 var mobScenePaths = [
 	preload("res://Scenes/1.tscn"),
 	preload("res://Scenes/2.tscn"),
 	preload("res://Scenes/3.tscn")
 ]
+
+var collectables = preload("res://Scenes/collectables.tscn")
+
 var mobInstances = []
 
 @onready var player := $PlayerCharacter as Node2D
 
 func _ready():
+	Collectables()
 	$Level1.position.x = 3000
 	$Level2.position.x = 6000
 	$Level3.position.x = 9000
 	spawnMobs()
+
 	
 
 func spawnMobs():
@@ -88,6 +94,8 @@ func _on_sword_hitbox_body_entered(body):
 		if body.is_inside_tree():
 			body.position = Vector2(randf_range(-750, 750), borders[randi() % borders.size()])
 			body.show()
+			
+		
 
 
 func _on_killed():
@@ -140,3 +148,19 @@ func _on_player_character_room_0(area):
 	$Level3.position.x = 9000
 	room = 0
 	KillMobs()
+
+
+func Collectables():
+	$Collectables.position = Vector2(randf_range(-400, 400), randf_range(-200, 200))
+	$Collectables.show()
+	
+
+func _on_area_2d_2_area_entered(area):
+	$Collectables.position.x = 6000
+	playerHealth+= 60
+	$HealthCounter.text = ("Health: "+ str(playerHealth))
+	
+	await get_tree().create_timer(10).timeout
+	
+	Collectables()
+	
