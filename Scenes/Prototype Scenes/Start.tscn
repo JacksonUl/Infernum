@@ -4,21 +4,30 @@
 [ext_resource type="Script" path="res://Scenes/Prototype Scenes/Start.gd" id="1_dp0o0"]
 [ext_resource type="Texture2D" uid="uid://17k0dxhp44hu" path="res://Assets/TitleScreenAssets/TitleScreenLogoInfernum.png" id="2_rbgr7"]
 
-[node name="StartScreen" type="Node2D"]
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dp0o0")
 
 [node name="StartBackGround" type="ColorRect" parent="."]
-offset_left = -1745.0
-offset_top = -1841.0
-offset_right = 5627.0
-offset_bottom = 3506.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.133333, 0.105882, 0.121569, 0.862745)
+metadata/_edit_lock_ = true
 
 [node name="STartButton" type="Button" parent="."]
-offset_left = 906.0
-offset_top = 1240.0
-offset_right = 1931.0
-offset_bottom = 1431.0
+offset_left = 1365.0
+offset_top = 1458.0
+offset_right = 2390.0
+offset_bottom = 1649.0
 scale = Vector2(1.00119, 1.00058)
 theme_override_fonts/font = ExtResource("1_051vo")
 theme_override_font_sizes/font_size = 100
